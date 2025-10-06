@@ -1,0 +1,343 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication and user management
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  phone     String?
+  role      UserRole @default(CUSTOMER)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  addresses Address[]
+  orders    Order[]
+  cartItems CartItem[]
+  reviews   Review[]
+  wishlist  WishlistItem[]
+  // Audit logs created by this user (admin/editor actions)
+  auditLogs AuditLog[]
+  // Products and categories published/edited by this user
+  publishedProducts Product[] @relation("ProductPublishedBy")
+  publishedCategories Category[] @relation("CategoryPublishedBy")
+
+  @@map("users")
+}
+
+// User roles enum
+enum UserRole {
+  CUSTOMER
+  ADMIN
+  SUPER_ADMIN
+}
+
+// Address model for user shipping addresses
+model Address {
+  id           String  @id @default(cuid())
+  userId       String
+  firstName    String
+  lastName     String
+  company      String?
+  addressLine1 String
+  addressLine2 String?
+  city         String
+  state        String
+  postalCode   String
+  country      String
+  phone        String?
+  isDefault    Boolean @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders Order[]
+
+  @@map("addresses")
+}
+
+// Category model for product categorization
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  image       String?
+  parentId    String?
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
+  // Performance optimization field
+  productCount Int      @default(0)
+  // Admin publish control: if false the category is hidden from public/user-facing endpoints
+  published   Boolean   @default(true)
+  publishedAt DateTime?
+  publishedBy String?
+  publishedByUser User? @relation("CategoryPublishedBy", fields: [publishedBy], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryHierarchy")
+  products Product[]
+
+  @@map("categories")
+}
+
+// Product model for e-commerce products
+model Product {
+  id              String           @id @default(cuid())
+  name            String
+  slug            String           @unique
+  description     String?
+  shortDescription String?
+  sku             String           @unique
+  price           Decimal          @db.Decimal(10, 2)
+  comparePrice    Decimal?         @db.Decimal(10, 2)
+  costPrice       Decimal?         @db.Decimal(10, 2)
+  trackQuantity   Boolean          @default(true)
+  quantity        Int              @default(0)
+  minQuantity     Int              @default(0)
+  weight          Decimal?         @db.Decimal(8, 2)
+  dimensions      String?
+  isActive        Boolean          @default(true)
+  // Admin publish control: when false this product will be hidden from public/user-facing endpoints
+  published       Boolean          @default(true)
+  publishedAt     DateTime?
+  publishedBy     String?
+  publishedByUser User?             @relation("ProductPublishedBy", fields: [publishedBy], references: [id])
+  isFeatured      Boolean          @default(false)
+  metaTitle       String?
+  metaDescription String?
+  tags            String[]
+  // Performance optimization fields
+  averageRating   Decimal?         @db.Decimal(3, 2) @default(0)
+  reviewCount     Int              @default(0)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  // Relations
+  category      Category       @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  images        ProductImage[]
+  variants      ProductVariant[]
+  orderItems    OrderItem[]
+  cartItems     CartItem[]
+  reviews       Review[]
+  wishlistItems WishlistItem[]
+
+  // Optional JSON column to store pending draft/metadata edits by admin (if you prefer draft workflow)
+  draft        Json?
+
+  @@index([categoryId])
+  @@index([isFeatured, createdAt])
+  @@index([isActive])
+  @@index([slug])
+  @@map("products")
+}
+
+// Audit log to track admin/editor changes to entities (used to show change history or trigger frontend updates)
+model AuditLog {
+  id         String   @id @default(cuid())
+  entityType String   // e.g. "Product", "Category", "Order" etc.
+  entityId   String
+  changes    Json     // JSON diff or full payload of changes
+  editedBy   String?
+  editedByUser User?  @relation(fields: [editedBy], references: [id])
+  createdAt  DateTime @default(now())
+
+  @@map("audit_logs")
+}
+
+// Product images model
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  url       String
+  altText   String?
+  sortOrder Int      @default(0)
+  isPrimary Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_images")
+}
+
+// Product variants model (for size, color, etc.)
+model ProductVariant {
+  id        String   @id @default(cuid())
+  productId String
+  name      String   // e.g., "Size", "Color"
+  value     String   // e.g., "Large", "Red"
+  price     Decimal? @db.Decimal(10, 2)
+  quantity  Int      @default(0)
+  sku       String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_variants")
+}
+
+// Cart items model
+model CartItem {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("cart_items")
+}
+
+// Orders model
+model Order {
+  id              String      @id @default(cuid())
+  orderNumber     String      @unique
+  userId          String
+  status          OrderStatus @default(PENDING)
+  paymentStatus   PaymentStatus @default(PENDING)
+  paymentMethod   String?
+  subtotal        Decimal     @db.Decimal(10, 2)
+  taxAmount       Decimal     @default(0) @db.Decimal(10, 2)
+  shippingAmount  Decimal     @default(0) @db.Decimal(10, 2)
+  discountAmount  Decimal     @default(0) @db.Decimal(10, 2)
+  totalAmount     Decimal     @db.Decimal(10, 2)
+  currency        String      @default("USD")
+  notes           String?
+  shippingAddressId String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  // Relations
+  user            User        @relation(fields: [userId], references: [id])
+  shippingAddress Address?    @relation(fields: [shippingAddressId], references: [id])
+  items           OrderItem[]
+  payments        Payment[]
+
+  @@map("orders")
+}
+
+// Order status enum
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+// Payment status enum
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
+// Order items model
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Decimal  @db.Decimal(10, 2)
+  total     Decimal  @db.Decimal(10, 2)
+  createdAt DateTime @default(now())
+
+  // Relations
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
+
+// Payments model
+model Payment {
+  id              String        @id @default(cuid())
+  orderId         String
+  amount          Decimal       @db.Decimal(10, 2)
+  currency        String        @default("USD")
+  status          PaymentStatus @default(PENDING)
+  paymentMethod   String
+  transactionId   String?
+  paymentGateway  String?
+  gatewayResponse Json?
+  // Cash-on-Delivery support
+  isCashOnDelivery Boolean   @default(false)
+  codCollected     Boolean   @default(false)
+  codCollectedAt   DateTime?
+  codReceiverName  String?
+  codNotes         String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  // Relations
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+// Reviews model
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  rating    Int      // 1-5 stars
+  title     String?
+  comment   String?
+  isVerified Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("reviews")
+}
+
+// Wishlist model
+model WishlistItem {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  createdAt DateTime @default(now())
+
+  // Relations
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("wishlist_items")
+}

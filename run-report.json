@@ -1,0 +1,401 @@
+{
+  "dryRun": true,
+  "products": [
+    {
+      "name": "Kojic Acid Whitening Cream",
+      "slug": "kojic-acid-whitening-cream",
+      "productId": null,
+      "categoryPath": "Skincare > Face > Brightening",
+      "categoryIds": [
+        "skincare",
+        "face",
+        "brightening"
+      ],
+      "images": [
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\1ST.jpg",
+          "checksum": "ee163553b9cce03e1f7875d262ced6d182d3d8c290498762a54a086f453a7578",
+          "mediaId": null,
+          "position": 1,
+          "alt": "Kojic Acid Whitening Cream – Image 1"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\2ND.jpg",
+          "checksum": "868fb3056119090598155a56df218af98d5ec133c46bd1bdea7fd4e14cd33f0a",
+          "mediaId": null,
+          "position": 2,
+          "alt": "Kojic Acid Whitening Cream – Image 2"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\3rd.jpg",
+          "checksum": "fdeecdda5e153748a063ebdba86c812a95bfdc04f8cc40e44f05f7cebb0ae39f",
+          "mediaId": null,
+          "position": 3,
+          "alt": "Kojic Acid Whitening Cream – Image 3"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\4th.jpg",
+          "checksum": "b7b1f0a6e8af4ce438b0b5a7e23607a4e2817e0aa910dcdbc1c042bf32bd5b29",
+          "mediaId": null,
+          "position": 4,
+          "alt": "Kojic Acid Whitening Cream – Image 4"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\5th.jpg",
+          "checksum": "07622605bb700122eab317669638bba1e01ac0c335936351efcfbd8a5eb405e8",
+          "mediaId": null,
+          "position": 5,
+          "alt": "Kojic Acid Whitening Cream – Image 5"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\6th.jpg",
+          "checksum": "a819361059472ef063642d9c0d4926872fbbf9949d9e2dee36e4be4534013f39",
+          "mediaId": null,
+          "position": 6,
+          "alt": "Kojic Acid Whitening Cream – Image 6"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\7th.jpg",
+          "checksum": "d7e207f425a9354f8eb2f9b0bd84ffa981c27c6f2931a2580a441d2ef4a67d93",
+          "mediaId": null,
+          "position": 7,
+          "alt": "Kojic Acid Whitening Cream – Image 7"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\8TH.jpg",
+          "checksum": "e0db3ce8dddee3729478c4fc2215efe89692ec53a2c103bb2eeb98ae59d53d82",
+          "mediaId": null,
+          "position": 8,
+          "alt": "Kojic Acid Whitening Cream – Image 8"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\9TH.jpg",
+          "checksum": "23bc388a9c78d7c715eedb74c2f05e18ba1696d278e9e5689f0f8952cd1e7023",
+          "mediaId": null,
+          "position": 9,
+          "alt": "Kojic Acid Whitening Cream – Image 9"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\kojic jpgs\\10TH.jpg",
+          "checksum": "b9adace7798d3aa96338d5c7e752a528d390295d7b817ef5894e088175ff0930",
+          "mediaId": null,
+          "position": 10,
+          "alt": "Kojic Acid Whitening Cream – Image 10"
+        }
+      ]
+    },
+    {
+      "name": "Ultimate Methylene Blue 1%",
+      "slug": "ultimate-methylene-blue-1percent",
+      "productId": null,
+      "categoryPath": "Supplements > Cognitive Support",
+      "categoryIds": [
+        "supplements",
+        "cognitive-support"
+      ],
+      "images": []
+    },
+    {
+      "name": "NAD+ Nicotinamide Riboside",
+      "slug": "nad-nicotinamide-riboside",
+      "productId": null,
+      "categoryPath": "Supplements > Cellular Energy",
+      "categoryIds": [
+        "supplements",
+        "cellular-energy"
+      ],
+      "images": [
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\1st.jpg",
+          "checksum": "c60542f2c7a40b00a2eb96858fd8c78be6996f2f968480f998020713247df256",
+          "mediaId": null,
+          "position": 1,
+          "alt": "NAD+ Nicotinamide Riboside – Image 1"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\2nd.jpg",
+          "checksum": "9319c97299581da8b3067a76693adc3d5f015758c32fc0b891a3f6c391ef3f2f",
+          "mediaId": null,
+          "position": 2,
+          "alt": "NAD+ Nicotinamide Riboside – Image 2"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\3rd.jpg",
+          "checksum": "920b3862257eea1e1b062fa2e0d9c2373286b0e296a4f13fc87a56576c62d89f",
+          "mediaId": null,
+          "position": 3,
+          "alt": "NAD+ Nicotinamide Riboside – Image 3"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\4th.jpg",
+          "checksum": "17e1758a1c203c1329aa95e49e15ed15ead54ed17798f3d3e8e6362e6b4d8e78",
+          "mediaId": null,
+          "position": 4,
+          "alt": "NAD+ Nicotinamide Riboside – Image 4"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\5th.jpg",
+          "checksum": "2707431d921597eb79f0b259671bb3b3141f4d8b908a04c872d662f86cd697a2",
+          "mediaId": null,
+          "position": 5,
+          "alt": "NAD+ Nicotinamide Riboside – Image 5"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\6th.jpg",
+          "checksum": "de0a8c30a20d23fd7949c4588d021eeb0550fad2fae8086cd5ae0eb6563191d0",
+          "mediaId": null,
+          "position": 6,
+          "alt": "NAD+ Nicotinamide Riboside – Image 6"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\7TH.jpg",
+          "checksum": "25411f84e6f0bd7d631a845ea836508ce46f578355ca0db554bfcd8235c5fa71",
+          "mediaId": null,
+          "position": 7,
+          "alt": "NAD+ Nicotinamide Riboside – Image 7"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\nad + jpgs\\8TH.jpg",
+          "checksum": "ad83675ff70191166619022a29f78573c9575fe501d0a66069b055071ea764b1",
+          "mediaId": null,
+          "position": 8,
+          "alt": "NAD+ Nicotinamide Riboside – Image 8"
+        }
+      ]
+    },
+    {
+      "name": "Parasite Cleanser (Liquid Herbal Extract)",
+      "slug": "parasite-cleanser-liquid-herbal-extract",
+      "productId": null,
+      "categoryPath": "Supplements > Detox & Gut Health",
+      "categoryIds": [
+        "supplements",
+        "detox-and-gut-health"
+      ],
+      "images": [
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\1st.jpg",
+          "checksum": "42d5a943c02bb998a4405975412b02f2939f4b65f285bedc30e72ce2362360fb",
+          "mediaId": null,
+          "position": 1,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 1"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\2nd.jpg",
+          "checksum": "f0976e365dfb54024417298746b0d1121fc0516703ada1dcea8919ef0499a83b",
+          "mediaId": null,
+          "position": 2,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 2"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\3rd with gradient.jpg",
+          "checksum": "c2000e84aea5786dcb6eaea691fefff40cef36b345ebdf60b1b579c740e319d0",
+          "mediaId": null,
+          "position": 3,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 3"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\3rd.jpg",
+          "checksum": "9296ba5acab7275ce0f1053b5922b941717916d8a10a280b6721d1dc70eab8ea",
+          "mediaId": null,
+          "position": 4,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 4"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\4th.jpg",
+          "checksum": "97827996fc3643aa068246cb8535166d4f80460deecb29fafcc2a2a2407bf4e2",
+          "mediaId": null,
+          "position": 5,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 5"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\5TH.jpg",
+          "checksum": "2a6b594ee72cf97e33371831ca0cc4ca0d5b7ee8846733c57c1bcc6ca186a778",
+          "mediaId": null,
+          "position": 6,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 6"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\6TH.jpg",
+          "checksum": "def3f78ce5fbc7138284277a66ea67c1017a806f4f5d6702332b8945a40136a0",
+          "mediaId": null,
+          "position": 7,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 7"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\parasite\\parasite jpgs\\7TH.jpg",
+          "checksum": "eb646fdf347cb82bfab1184e266d746ff8eee2270d7a233cda590e5338690599",
+          "mediaId": null,
+          "position": 8,
+          "alt": "Parasite Cleanser (Liquid Herbal Extract) – Image 8"
+        }
+      ]
+    },
+    {
+      "name": "Retinol + Collagen Cream",
+      "slug": "retinol-collagen-cream",
+      "productId": null,
+      "categoryPath": "Skincare > Face > Anti-Aging",
+      "categoryIds": [
+        "skincare",
+        "face",
+        "anti-aging"
+      ],
+      "images": [
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\1st.jpg",
+          "checksum": "676d26a59eae91d87aa7a389f3dc55a6c0889d2f5100406bc4997cbc59d9dd09",
+          "mediaId": null,
+          "position": 1,
+          "alt": "Retinol + Collagen Cream – Image 1"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\2nd.jpg",
+          "checksum": "de35d85fb6883c2f70d91f3da53b15dd855152862eb5ca4092c7314ca590f8f4",
+          "mediaId": null,
+          "position": 2,
+          "alt": "Retinol + Collagen Cream – Image 2"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\3RD.jpg",
+          "checksum": "bdf90e385e4b9cd8da89d080c3b539c55c8f48af117035e017210751ba448acf",
+          "mediaId": null,
+          "position": 3,
+          "alt": "Retinol + Collagen Cream – Image 3"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\4TH.jpg",
+          "checksum": "4feedfdd06a862c98177a2aa14afaab2080c332a38eb92f8a421139ed7c608d9",
+          "mediaId": null,
+          "position": 4,
+          "alt": "Retinol + Collagen Cream – Image 4"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\5TH.jpg",
+          "checksum": "5ca803ed491b3b1bc112d80e4be7817426f5dcd78f18b6436a8dcd9f94ac82c5",
+          "mediaId": null,
+          "position": 5,
+          "alt": "Retinol + Collagen Cream – Image 5"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\6th.jpg",
+          "checksum": "92b559f3b82a3419da7672211f745112d859b83de3b5bca1beb259d78dfcb97a",
+          "mediaId": null,
+          "position": 6,
+          "alt": "Retinol + Collagen Cream – Image 6"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\7.jpg",
+          "checksum": "9c5210ef02eea545ac242d8d8f3e1a99a2f751e3987797eaaf588398044a8fe0",
+          "mediaId": null,
+          "position": 7,
+          "alt": "Retinol + Collagen Cream – Image 7"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\8TH.jpg",
+          "checksum": "1ce9f3b8fd40db976ed723172b284efc4317f7d10dd58a44471654cbc3a478e9",
+          "mediaId": null,
+          "position": 8,
+          "alt": "Retinol + Collagen Cream – Image 8"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\9TH.jpg",
+          "checksum": "3b81b216b8a54b5fa0e8914d2bb0d455cad42205c4010b5ed25f0ebd84388882",
+          "mediaId": null,
+          "position": 9,
+          "alt": "Retinol + Collagen Cream – Image 9"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\retinol listing images\\10TH.jpg",
+          "checksum": "83ef9e739ee687fac2240d772d072504d8f5441a4b626b162ce7800ef6902a7c",
+          "mediaId": null,
+          "position": 10,
+          "alt": "Retinol + Collagen Cream – Image 10"
+        }
+      ]
+    },
+    {
+      "name": "Matrixyl 3000 + Argireline Cream",
+      "slug": "matrixyl-3000-argireline-cream",
+      "productId": null,
+      "categoryPath": "Skincare > Face > Anti-Aging",
+      "categoryIds": [
+        "skincare",
+        "face",
+        "anti-aging"
+      ],
+      "images": [
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\1st.jpg",
+          "checksum": "7745eadc4497d9275c33130be2f6a64345dcbe3c18f63a8157227ad431752830",
+          "mediaId": null,
+          "position": 1,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 1"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\2nd.jpg",
+          "checksum": "29e2cf14be3bf9c7be4d1bc88104fb690522a49d0d63bbf0af1d5aa371451280",
+          "mediaId": null,
+          "position": 2,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 2"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\3rd.jpg",
+          "checksum": "74f79840082447d7fac7eee5dac8047f8ad7c05cd67bae338fbfdc4d4802c086",
+          "mediaId": null,
+          "position": 3,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 3"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\4TH.jpg",
+          "checksum": "75c4bbd143d765177f08f763ddca73cc0c813031b49d353cf9b782b4e1231293",
+          "mediaId": null,
+          "position": 4,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 4"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\5TH.jpg",
+          "checksum": "d3502164b5d5d89d924d40c7d56d0779b749d78607d8a171522287c124b96d11",
+          "mediaId": null,
+          "position": 5,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 5"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\6TH.jpg",
+          "checksum": "17f5431067899812724f3a11a02ea34103179c7bbd9a39624ddc1bc22be11c9d",
+          "mediaId": null,
+          "position": 6,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 6"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\7TH.jpg",
+          "checksum": "e97f4fe5dbce4657ff71040ce51d9885355259d73baa847d9c88b417e30365d8",
+          "mediaId": null,
+          "position": 7,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 7"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\8TH.jpg",
+          "checksum": "56766f9aa5d4f2ac48b62ea308c6518be3de110ea5b66e333c4343979bd74730",
+          "mediaId": null,
+          "position": 8,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 8"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\9TH.jpg",
+          "checksum": "af5d33e18701bda42d3f15b9b9c9c2838815d4349e42bc439bfa4df07b19701d",
+          "mediaId": null,
+          "position": 9,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 9"
+        },
+        {
+          "file": "C:\\Users\\arqam\\Downloads\\NP\\backend\\Images\\listings\\matrixyl images\\10th.jpg",
+          "checksum": "a32ed9383d416913af15a93efc0080496d12b9676979f753a50c7a6db42cacba",
+          "mediaId": null,
+          "position": 10,
+          "alt": "Matrixyl 3000 + Argireline Cream – Image 10"
+        }
+      ]
+    }
+  ]
+}

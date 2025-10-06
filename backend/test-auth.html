@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .success {
+            color: #28a745;
+            background-color: #d4edda;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .profile-info {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Authentication System Test</h1>
+    
+    <!-- Signup Form -->
+    <div class="container">
+        <h2>Sign Up</h2>
+        <div id="signup-message"></div>
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="signup-name">Name:</label>
+                <input type="text" id="signup-name" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" required minlength="6">
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Login Form -->
+    <div class="container">
+        <h2>Login</h2>
+        <div id="login-message"></div>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="container">
+        <h2>User Profile</h2>
+        <div id="profile-message"></div>
+        <button id="get-profile" disabled>Get Profile</button>
+        <button id="logout">Logout</button>
+        <div id="profile-info" class="profile-info" style="display: none;"></div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:5000/api';
+        let authToken = localStorage.getItem('authToken');
+        
+        // Update UI based on auth state
+        function updateUI() {
+            const getProfileBtn = document.getElementById('get-profile');
+            if (authToken) {
+                getProfileBtn.disabled = false;
+            } else {
+                getProfileBtn.disabled = true;
+                document.getElementById('profile-info').style.display = 'none';
+            }
+        }
+
+        // Show message
+        function showMessage(elementId, message, isError = false) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="${isError ? 'error' : 'success'}">${message}</div>`;
+            setTimeout(() => {
+                element.innerHTML = '';
+            }, 5000);
+        }
+
+        // Signup
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage('signup-message', `✅ ${data.message}! Token received.`);
+                    authToken = data.data.token;
+                    localStorage.setItem('authToken', authToken);
+                    updateUI();
+                    document.getElementById('signup-form').reset();
+                } else {
+                    showMessage('signup-message', `❌ ${data.message}`, true);
+                }
+            } catch (error) {
+                showMessage('signup-message', `❌ Network error: ${error.message}`, true);
+            }
+        });
+
+        // Login
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage('login-message', `✅ ${data.message}! Welcome back.`);
+                    authToken = data.data.token;
+                    localStorage.setItem('authToken', authToken);
+                    updateUI();
+                    document.getElementById('login-form').reset();
+                } else {
+                    showMessage('login-message', `❌ ${data.message}`, true);
+                }
+            } catch (error) {
+                showMessage('login-message', `❌ Network error: ${error.message}`, true);
+            }
+        });
+
+        // Get Profile
+        document.getElementById('get-profile').addEventListener('click', async () => {
+            if (!authToken) {
+                showMessage('profile-message', '❌ Please login first', true);
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                    },
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage('profile-message', `✅ ${data.message}`);
+                    const profileDiv = document.getElementById('profile-info');
+                    profileDiv.innerHTML = `
+                        <h3>Profile Information:</h3>
+                        <p><strong>ID:</strong> ${data.data.user.id}</p>
+                        <p><strong>Name:</strong> ${data.data.user.name}</p>
+                        <p><strong>Email:</strong> ${data.data.user.email}</p>
+                        <p><strong>Role:</strong> ${data.data.user.role || 'CUSTOMER'}</p>
+                        <p><strong>Created:</strong> ${new Date(data.data.user.createdAt).toLocaleString()}</p>
+                    `;
+                    profileDiv.style.display = 'block';
+                } else {
+                    showMessage('profile-message', `❌ ${data.message}`, true);
+                }
+            } catch (error) {
+                showMessage('profile-message', `❌ Network error: ${error.message}`, true);
+            }
+        });
+
+        // Logout
+        document.getElementById('logout').addEventListener('click', () => {
+            authToken = null;
+            localStorage.removeItem('authToken');
+            updateUI();
+            showMessage('profile-message', '✅ Logged out successfully');
+        });
+
+        // Initialize UI
+        updateUI();
+
+        // Show server status
+        fetch(`${API_BASE_URL.replace('/api', '')}/health`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('✅ Server is running:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('❌ Server connection failed:', error);
+            });
+    </script>
+</body>
+</html>

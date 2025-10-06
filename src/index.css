@@ -1,0 +1,462 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Nutrition pHirst - Premium wellness design system */
+
+@layer base {
+  :root {
+    /* Brand colors */
+    --color-deep-pine: #0F2A1D;
+    --color-forest:    #375534;
+    --color-sage:      #6B9071;
+    --color-mist:      #AEC3B0;
+    --color-snowmint:  #E3EED4;
+
+    /* New darker green theme variables */
+    --primary-from: #071E07;      /* Darkest green from image */
+    --primary-mid: #0D330E;       /* Pakistan Green */
+    --primary-to: #477805;        /* Forest green accent */
+    --secondary: #2D531A;         /* Dark Moss */
+    --tertiary: #91A75D;          /* Reseda Green */
+    --accent: #B0C912;            /* Vibrant lime green */
+    --neutral-100: #CFD3AD;       /* Light sage */
+    --on-dark: #FFFFFF;
+    --on-light: #0B0D12;
+
+    /* Design tokens used across the app (shadcn) - Enhanced contrast */
+    --background: #F8FAF6;
+    --foreground: #0D1A0D;
+
+    --card: #FFFFFF;
+    --card-foreground: #0D1A0D;
+
+    --popover: #FFFFFF;
+    --popover-foreground: #0D1A0D;
+
+    --muted: var(--neutral-100);
+    --muted-foreground: #2D4A2D;
+
+    --border: var(--tertiary);
+    --input: var(--neutral-100);
+    --ring: var(--accent);
+
+    --primary: var(--primary-from);
+    --primary-foreground: #FFFFFF;
+
+    --secondary: var(--secondary);
+    --secondary-foreground: #FFFFFF;
+
+    --accent: var(--accent);
+    --accent-foreground: #0D1A0D;
+
+    /* Enhanced text colors for better contrast */
+    --text-primary: #0D1A0D;
+    --text-secondary: #2D4A2D;
+    --text-muted: #4A6B4A;
+    --text-accent: #1A3A1A;
+    --text-white: #FFFFFF;
+    --text-dark: #071E07;
+
+    /* Enhanced icon colors */
+    --icon-primary: #0D1A0D;
+    --icon-secondary: #2D4A2D;
+    --icon-muted: #4A6B4A;
+    --icon-accent: var(--accent);
+    --icon-white: #FFFFFF;
+
+    --destructive: #B42318;
+    --destructive-foreground: #ffffff;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: var(--primary-from);
+    --foreground: #FFFFFF;
+
+    --card: var(--secondary);
+    --card-foreground: #FFFFFF;
+
+    --popover: var(--secondary);
+    --popover-foreground: #FFFFFF;
+
+    --primary: var(--accent);
+    --primary-foreground: var(--primary-from);
+
+    --secondary: var(--tertiary);
+    --secondary-foreground: #FFFFFF;
+
+    --muted: var(--secondary);
+    --muted-foreground: var(--neutral-100);
+
+    --accent: var(--accent);
+    --accent-foreground: var(--primary-from);
+
+    --destructive: #B42318;
+    --destructive-foreground: #ffffff;
+
+    --border: var(--tertiary);
+    --input: var(--secondary);
+    --ring: var(--accent);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body { 
+    font-family: "Source Sans Pro", "Josefin Sans", system-ui, sans-serif; 
+    font-weight: 300; 
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .font-serif, .font-heading { 
+    font-family: "Playfair Display", Constantia, Georgia, serif; 
+    font-weight: 700; 
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  h1 { font-size: 2.5rem; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+  h2 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  h3 { font-size: 1.5rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+  h4 { font-size: 1.25rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+
+  .font-display {
+    font-family: "Playfair Display", Constantia, Georgia, serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+  
+  .font-body {
+    font-family: "Source Sans Pro", "Josefin Sans", system-ui, sans-serif;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  .font-button {
+    font-family: "Josefin Sans", "Source Sans Pro", system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  button, .btn, [role="button"] {
+    font-family: "Josefin Sans", "Source Sans Pro", system-ui, sans-serif;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .text-sm { font-size: 0.875rem; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+  .text-xs { font-size: 0.75rem; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+  .text-lg { font-size: 1.125rem; font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+  .text-xl { font-size: 1.25rem; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+  .text-2xl { font-size: 1.5rem; font-weight: 700; text-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .text-3xl { font-size: 1.875rem; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+  .text-4xl { font-size: 2.25rem; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+}
+
+@layer utilities {
+  /* Enhanced gradients with new darker theme */
+  .bg-gradient-hero {
+    background: linear-gradient(180deg,
+      #F8FAF6 0%,
+      var(--neutral-100) 30%,
+      var(--tertiary) 70%,
+      var(--secondary) 100%);
+  }
+
+  .bg-gradient-product {
+    background:
+      radial-gradient(80% 80% at 20% 10%, rgba(255,255,255,0.6) 0%, transparent 50%),
+      linear-gradient(140deg, #FFFFFF 0%, var(--neutral-100) 30%, var(--tertiary) 100%);
+  }
+  
+  .shadow-elegant { 
+    box-shadow: 0 10px 30px rgba(7,30,7,0.15), 0 2px 6px rgba(7,30,7,0.08); 
+  }
+  
+  .shadow-product { 
+    box-shadow: 0 12px 28px rgba(45,83,26,0.25), 0 6px 12px rgba(7,30,7,0.12); 
+  }
+
+  .transition-elegant {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced darker green theme utility classes */
+  .btn-gradient {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px rgba(7, 30, 7, 0.3);
+    letter-spacing: 0.5px;
+  }
+  
+  .btn-gradient:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(7, 30, 7, 0.4);
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .btn-outline {
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .btn-outline:hover {
+    background: var(--secondary);
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(45, 83, 26, 0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .chip {
+    background: linear-gradient(135deg, var(--tertiary) 0%, var(--accent) 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 16px rgba(145, 167, 93, 0.3);
+    letter-spacing: 0.3px;
+  }
+  
+  .focus-ring {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(80% 60% at 0% 0%, rgba(176, 201, 18, 0.15) 0%, transparent 70%);
+  }
+
+  .shadow-leaf {
+    box-shadow: 0 20px 40px rgba(7, 30, 7, 0.25), 0 8px 16px rgba(7, 30, 7, 0.15);
+  }
+
+  /* Enhanced selected/active states - Professional Button Styling */
+  .btn-selected {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px rgba(7, 30, 7, 0.3);
+    transform: translateY(-1px);
+    letter-spacing: 0.5px;
+    border: 2px solid var(--accent);
+  }
+
+  .btn-selected:hover {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(7, 30, 7, 0.4);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    filter: brightness(1.1);
+  }
+
+  .nav-selected {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px rgba(7, 30, 7, 0.3);
+    border: 2px solid var(--accent);
+    letter-spacing: 0.5px;
+    transform: translateY(-1px);
+  }
+
+  .nav-selected:hover {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    box-shadow: 0 12px 40px rgba(7, 30, 7, 0.4);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+
+  .tab-selected {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px rgba(7, 30, 7, 0.3);
+    border: 2px solid var(--accent);
+    letter-spacing: 0.5px;
+    transform: translateY(-1px);
+  }
+
+  .tab-selected:hover {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    box-shadow: 0 12px 40px rgba(7, 30, 7, 0.4);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+
+  .category-selected {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px rgba(7, 30, 7, 0.3);
+    border: 2px solid var(--accent);
+    transform: translateX(4px) translateY(-1px);
+    letter-spacing: 0.5px;
+  }
+
+  .category-selected:hover {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    box-shadow: 0 12px 40px rgba(7, 30, 7, 0.4);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    filter: brightness(1.1);
+    transform: translateX(4px) translateY(-2px);
+  }
+
+  /* Enhanced text color utilities */
+  .text-primary-enhanced {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .text-secondary-enhanced {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .text-muted-enhanced {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .text-accent-enhanced {
+    color: var(--text-accent);
+    font-weight: 600;
+  }
+
+  .text-white-enhanced {
+    color: var(--text-white);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  /* Enhanced icon color utilities */
+  .icon-primary {
+    color: var(--icon-primary);
+  }
+
+  .icon-secondary {
+    color: var(--icon-secondary);
+  }
+
+  .icon-muted {
+    color: var(--icon-muted);
+  }
+
+  .icon-accent {
+    color: var(--icon-accent);
+  }
+
+  .icon-white {
+    color: var(--icon-white);
+  }
+
+  /* Enhanced contrast for specific elements */
+  .nav-text {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .nav-text:hover {
+    color: var(--accent);
+  }
+
+  .category-text {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .category-text:hover {
+    color: var(--accent);
+  }
+
+  .button-text {
+    color: var(--text-white);
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  .heading-text {
+    color: var(--text-primary);
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .body-text {
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .muted-text {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* Professional selected container styling */
+  .selected-container {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 32px rgba(7, 30, 7, 0.3);
+    border: 2px solid var(--accent);
+    letter-spacing: 0.5px;
+    transform: translateY(-1px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .selected-container:hover {
+    background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
+    color: #FFFFFF;
+    box-shadow: 0 12px 40px rgba(7, 30, 7, 0.4);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+
+  .selected-text {
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    letter-spacing: 0.5px;
+  }
+
+  .selected-icon {
+    color: #FFFFFF;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+  }
+}
