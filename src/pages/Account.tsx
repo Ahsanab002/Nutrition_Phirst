@@ -237,7 +237,7 @@ const Account = () => {
               <TabsContent value="register">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-center font-serif">Join Arrae</CardTitle>
+                    <CardTitle className="text-center font-serif">Join Nutrition Phirst</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={handleSignup} className="space-y-4">
