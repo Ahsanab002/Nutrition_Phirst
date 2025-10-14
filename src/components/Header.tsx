@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { productService, BackendCategory } from '@/services/productService';
+import logo from "@/assets/Logooo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -121,7 +122,14 @@ const Header = () => {
             to="/"
             className="flex items-center space-x-2 font-display text-xl font-medium tracking-tight"
           >
-            <span className="heading-text">Nutrition pHirst</span>
+            <img
+              src={logo}
+              alt="Nutrition pHirst"
+              style={{ transform: 'scale(5) translateX(10px)' }}
+              className="h-10 w-auto object-contain drop-shadow-sm shrink-0"
+              loading="eager"
+              decoding="async"
+            />
           </Link>
 
           {/* Desktop Navigation */}
