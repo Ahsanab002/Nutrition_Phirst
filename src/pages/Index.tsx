@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProductGrid from "@/components/ProductGrid";
-// import ClinicalResults from "@/components/ClinicalResults";
+import ClinicalResults from "@/components/ClinicalResults";
 import FocusBanner from "@/components/FocusBanner";
 // ...existing code...
 import PressLogos from "@/components/PressLogos";
