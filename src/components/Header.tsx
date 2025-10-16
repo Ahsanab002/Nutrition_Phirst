@@ -12,6 +12,15 @@
 // } from "@/components/ui/dropdown-menu";
 // import { productService, BackendCategory } from '@/services/productService';
 
+
+// Optional: Rename categories for nicer display titles
+const CATEGORY_NAME_MAP: Record<string, string> = {
+  'anti-aging': 'Anti Aging NAD+ Supplement',
+  'cognitive-health': 'Brain Health',
+  'detox-cleanse': 'Digestive',
+  'nad-supplements': 'NAD+ Gummies Energy',
+};
+
 // const Header = () => {
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
 //   const navigate = useNavigate();
@@ -294,10 +303,11 @@ const Header = () => {
         const categoriesResponse = await productService.getCategories();
         if (categoriesResponse && categoriesResponse.success && mounted) {
           const backendCategories = categoriesResponse.categories.map((cat: BackendCategory) => ({
-            id: cat.slug,
-            name: cat.name,
-            icon: getIconForCategory(cat.slug),
-          }));
+              id: cat.slug,
+              name: CATEGORY_NAME_MAP[cat.slug] || cat.name, // ✅ rename if mapped
+              icon: getIconForCategory(cat.slug),
+                        }));
+
           setCategories([
             { id: 'all', name: 'All Products', icon: Grid3X3 },
             ...backendCategories.filter(cat => !['supplements', 'beauty', 'nutrition', 'wellness', 'health'].includes(cat.id))
