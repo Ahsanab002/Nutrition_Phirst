@@ -9,7 +9,7 @@ const NADSupplements = () => {
       name: "NAD+ Nicotinamide Riboside Gummies",
       price: 89.99,
       originalPrice: 119.99,
-      image: "/backend/Images/JPGS NAD GUMMIES/nad-1.jpg",
+      image: "/backend/Images/JPGS NAD GUMMIES/1st.jpg",
       description: "High-potency NAD+ supplement in delicious gummy form for cellular energy and anti-aging support",
       rating: 4.9,
       reviewCount: 378,
@@ -52,6 +52,7 @@ const NADSupplements = () => {
       <BenefitPageTemplate
         title="NAD+ Supplements"
         description="Enhance your cellular energy and support healthy aging with our premium NAD+ supplements for longevity and vitality."
+        bannerImage="/Banners/banner 9.jpg"
         products={products}
       />
       <Footer />

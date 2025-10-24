@@ -6,10 +6,11 @@ const prisma = new PrismaClient();
 
 const categories = [
   { name: 'Skincare', slug: 'skincare', description: 'Premium skincare products for healthy skin' },
-  { name: 'Anti-Aging', slug: 'anti-aging', description: 'Advanced anti-aging solutions' },
-  { name: 'Cognitive Health', slug: 'cognitive-health', description: 'Brain health and cognitive function' },
-  { name: 'Detox & Cleanse', slug: 'detox-cleanse', description: 'Detoxification and cleansing products' },
-  { name: 'NAD+ Supplements', slug: 'nad-supplements', description: 'NAD+ and longevity supplements' }
+  { name: 'Anti Aging NAD+ Supplement', slug: 'anti-aging-nad-supplement', description: 'Advanced anti-aging NAD+ solutions' },
+  { name: 'Digestive', slug: 'digestive', description: 'Digestive health and gut wellness products' },
+  { name: 'Brain Health', slug: 'brain-health', description: 'Brain health and cognitive function' },
+  { name: 'NAD+ Gummies Energy', slug: 'nad-gummies-energy', description: 'NAD+ energy gummies for vitality' },
+  { name: 'Detox & Cleanse', slug: 'detox-cleanse', description: 'Detoxification and cleansing products' }
 ];
 
 const products = [
@@ -35,7 +36,7 @@ const products = [
     sku: 'MBC001',
     price: 79.99,
     comparePrice: 99.99,
-    categorySlug: 'cognitive-health',
+    categorySlug: 'brain-health',
     tags: ['methylene-blue', 'cognitive', 'brain-health', 'mitochondrial', 'nootropic'],
     imageFolder: 'methylene/methylene jpgs',
     isFeatured: true,
@@ -49,7 +50,7 @@ const products = [
     sku: 'NAD001',
     price: 89.99,
     comparePrice: 119.99,
-    categorySlug: 'nad-supplements',
+    categorySlug: 'nad-gummies-energy',
     tags: ['nad+', 'anti-aging', 'cellular-energy', 'longevity', 'gummies'],
     imageFolder: 'JPGS NAD GUMMIES',
     isFeatured: true,
@@ -63,7 +64,7 @@ const products = [
     sku: 'RCC001',
     price: 59.99,
     comparePrice: 79.99,
-    categorySlug: 'anti-aging',
+    categorySlug: 'anti-aging-nad-supplement',
     tags: ['retinol', 'collagen', 'anti-aging', 'wrinkles', 'peptides'],
     imageFolder: 'retinol/retinol jpgs/retinol jpgs',
     isFeatured: true,
@@ -77,7 +78,7 @@ const products = [
     sku: 'MPC001',
     price: 69.99,
     comparePrice: 89.99,
-    categorySlug: 'anti-aging',
+    categorySlug: 'anti-aging-nad-supplement',
     tags: ['matrixyl', 'peptides', 'skin-repair', 'collagen', 'firming'],
     imageFolder: 'matrixyl/matrixyl jpgs',
     isFeatured: false,
@@ -105,7 +106,7 @@ const products = [
     sku: 'NEC001',
     price: 74.99,
     comparePrice: 94.99,
-    categorySlug: 'cognitive-health',
+    categorySlug: 'brain-health',
     tags: ['nootropics', 'brain-health', 'cognitive', 'enhancement', 'memory'],
     imageFolder: 'neuro/neuro jpgs',
     isFeatured: false,

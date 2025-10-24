@@ -9,7 +9,7 @@ const AntiAging = () => {
       name: "Retinol + Collagen Anti-Aging Cream",
       price: 59.99,
       originalPrice: 79.99,
-      image: "/backend/Images/retinol/retinol jpgs/retinol-1.jpg",
+      image: "/backend/Images/retinol/retinol jpgs/retinol jpgs/1ST.jpg",
       description: "Advanced retinol and collagen cream for wrinkle reduction and skin renewal",
       rating: 4.9,
       reviewCount: 445,
@@ -20,7 +20,7 @@ const AntiAging = () => {
       name: "Matrixyl Peptide Complex Serum",
       price: 69.99,
       originalPrice: 89.99,
-      image: "/backend/Images/matrixyl/matrixyl-1.jpg",
+      image: "/backend/Images/nad + jpgs/1ST.jpg",
       description: "Professional matrixyl peptide complex for skin repair and collagen synthesis",
       rating: 4.8,
       reviewCount: 312
@@ -29,7 +29,7 @@ const AntiAging = () => {
       id: "anti-aging-3",
       name: "Hyaluronic Acid Plumping Serum",
       price: 44.99,
-      image: "/backend/Images/13.jpg",
+      image: "/backend/Images/matrixyl/matrixyl jpgs/1ST.jpg",
       description: "Deep hydration serum that plumps and smooths fine lines",
       rating: 4.7,
       reviewCount: 234,
@@ -39,7 +39,7 @@ const AntiAging = () => {
       id: "anti-aging-4",
       name: "Vitamin C + E Age Defense",
       price: 52.99,
-      image: "/backend/Images/13.jpg",
+      image: "/backend/Images/kojic jpgs/1ST.jpg",
       description: "Powerful antioxidant blend to protect against aging",
       rating: 4.6,
       reviewCount: 189
@@ -52,6 +52,7 @@ const AntiAging = () => {
       <BenefitPageTemplate
         title="Anti-Aging"
         description="Turn back time with our advanced anti-aging solutions featuring clinically-proven ingredients to reduce wrinkles and restore youthful skin."
+        bannerImage="/Banners/banner 7.jpg"
         products={products}
       />
       <Footer />

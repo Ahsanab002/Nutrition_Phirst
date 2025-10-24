@@ -9,14 +9,14 @@ const GutHealth = () => {
       name: "Probiotic Complex",
       price: 34.99,
       originalPrice: 44.99,
-      image: "/backend/Images/13.jpg",
+      image: "/backend/Images/neuro/neuro jpgs/1st.jpg",
       description: "50 billion CFU probiotic blend for digestive wellness"
     },
     {
       id: "gut-2",
       name: "Digestive Enzymes",
       price: 28.99,
-      image: "/backend/Images/13.jpg",
+      image: "/backend/Images/methylene/methylene jpgs/1ST.jpg",
       description: "Comprehensive enzyme formula for better digestion"
     },
     {
@@ -41,6 +41,7 @@ const GutHealth = () => {
       <BenefitPageTemplate
         title="Gut Health"
         description="Advanced digestive wellness solutions to support your gut microbiome, improve digestion, and enhance overall digestive comfort."
+        bannerImage="/Banners/banner 2.jpg"
         products={products}
       />
       <Footer />

@@ -52,6 +52,7 @@ const Skincare = () => {
       <BenefitPageTemplate
         title="Skincare"
         description="Transform your skin with our premium skincare collection featuring scientifically-backed ingredients for healthy, radiant skin."
+        bannerImage="/Banners/banner 16.jpg"
         products={products}
       />
       <Footer />

@@ -11,34 +11,40 @@ async function seedCategories() {
     const categories = await prisma.category.createMany({
       data: [
         {
-          name: 'Supplements',
-          slug: 'supplements',
-          description: 'Nutritional supplements and vitamins',
+          name: 'Skincare',
+          slug: 'skincare',
+          description: 'Premium skincare products for healthy skin',
           sortOrder: 1
         },
         {
-          name: 'Wellness',
-          slug: 'wellness',
-          description: 'General wellness and health products',
+          name: 'Anti Aging NAD+ Supplement',
+          slug: 'anti-aging-nad-supplement',
+          description: 'Advanced anti-aging NAD+ solutions',
           sortOrder: 2
         },
         {
-          name: 'Beauty',
-          slug: 'beauty',
-          description: 'Beauty and skincare products',
+          name: 'Digestive',
+          slug: 'digestive',
+          description: 'Digestive health and gut wellness products',
           sortOrder: 3
         },
         {
-          name: 'Health',
-          slug: 'health',
-          description: 'Health and medical products',
+          name: 'Brain Health',
+          slug: 'brain-health',
+          description: 'Brain health and cognitive function',
           sortOrder: 4
         },
         {
-          name: 'Nutrition',
-          slug: 'nutrition',
-          description: 'Nutrition and dietary products',
+          name: 'NAD+ Gummies Energy',
+          slug: 'nad-gummies-energy',
+          description: 'NAD+ energy gummies for vitality',
           sortOrder: 5
+        },
+        {
+          name: 'Detox & Cleanse',
+          slug: 'detox-cleanse',
+          description: 'Detoxification and cleansing products',
+          sortOrder: 6
         }
       ],
       skipDuplicates: true
@@ -109,19 +115,19 @@ async function seedCategories() {
       }
     ];
 
-    // Get the Supplements category ID
-    const supplementsCategory = await prisma.category.findUnique({
-      where: { slug: 'supplements' }
+    // Get the Skincare category ID
+    const skincareCategory = await prisma.category.findUnique({
+      where: { slug: 'skincare' }
     });
 
-    if (supplementsCategory) {
+    if (skincareCategory) {
       for (const productData of sampleProducts) {
         await prisma.product.upsert({
           where: { sku: productData.sku },
           update: {},
           create: {
             ...productData,
-            categoryId: supplementsCategory.id,
+            categoryId: skincareCategory.id,
             images: {
               create: [
                 {

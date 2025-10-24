@@ -43,7 +43,7 @@ const Header = () => {
           }));
           setCategories([
             { id: 'all', name: 'All Products', icon: Grid3X3 },
-            ...backendCategories.filter(cat => !['supplements', 'beauty', 'nutrition', 'wellness', 'health'].includes(cat.id))
+            ...backendCategories.filter(cat => !['supplements', 'beauty', 'nutrition', 'wellness', 'health', 'anti-aging', 'cognitive-health', 'nad-supplements'].includes(cat.id))
           ]);
         }
       } catch (err) {
@@ -59,11 +59,11 @@ const Header = () => {
   const getIconForCategory = (slug: string) => {
     switch (slug) {
       case 'skincare': return Heart;
-      case 'anti-aging': return Star;
-      case 'wellness-supplements': return Zap;
-      case 'cognitive-health': return Zap;
+      case 'anti-aging-nad-supplement': return Star;
+      case 'digestive': return Star;
+      case 'brain-health': return Zap;
+      case 'nad-gummies-energy': return TrendingUp;
       case 'detox-cleanse': return Star;
-      case 'nad-supplements': return TrendingUp;
       default: return Grid3X3;
     }
   };
@@ -73,11 +73,11 @@ const Header = () => {
   const BENEFIT_ROUTE_MAP: Record<string, string> = {
     // Backend categories (from seed database)
     'skincare': '/benefit/skincare',
-    'anti-aging': '/benefit/anti-aging',
-    'wellness-supplements': '/benefit/wellness-supplements',
-    'cognitive-health': '/benefit/cognitive-health',
+    'anti-aging-nad-supplement': '/benefit/anti-aging',
+    'digestive': '/benefit/gut-health',
+    'brain-health': '/benefit/cognitive-health',
+    'nad-gummies-energy': '/benefit/nad-supplements',
     'detox-cleanse': '/benefit/detox-cleanse',
-    'nad-supplements': '/benefit/nad-supplements',
     // Legacy/existing benefit pages
     'ultra-strength': '/benefit/ultra-strength',
     'sleep': '/benefit/sleep',
@@ -169,7 +169,9 @@ const Header = () => {
                             <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
                               <cat.icon className="h-4 w-4 text-foreground" />
                             </div>
-                            <span className="font-medium">{cat.name}</span>
+                            <span className="font-medium">
+                              {cat.name.replace(/NAD\+?\s*Supplement/gi, "").trim() || cat.name}
+                            </span>
                           </button>
                         ))}
                       </div>

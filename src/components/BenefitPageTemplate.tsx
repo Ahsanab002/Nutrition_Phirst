@@ -6,6 +6,7 @@ import { useScrollToTop } from "@/hooks/use-scroll-to-top";
 interface BenefitPageTemplateProps {
   title: string;
   description: string;
+  bannerImage?: string;
   products: Array<{
     id: string;
     name: string;
@@ -19,7 +20,7 @@ interface BenefitPageTemplateProps {
   }>;
 }
 
-const BenefitPageTemplate = ({ title, description, products }: BenefitPageTemplateProps) => {
+const BenefitPageTemplate = ({ title, description, bannerImage, products }: BenefitPageTemplateProps) => {
   useScrollToTop();
 
   return (
@@ -30,7 +31,7 @@ const BenefitPageTemplate = ({ title, description, products }: BenefitPageTempla
         <div
           className="w-full h-[360px] md:h-[460px] lg:h-[520px] bg-cover bg-center"
           style={{
-            backgroundImage: "url('/backend/Images/13.jpg')",
+            backgroundImage: `url('${bannerImage || '/backend/Images/13.jpg'}')`,
           }}
         />
 

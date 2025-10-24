@@ -41,6 +41,7 @@ const CognitiveHealth = () => {
       <BenefitPageTemplate
         title="Cognitive Health"
         description="Optimize your mental performance with our cutting-edge cognitive support supplements designed for enhanced focus, memory, and brain health."
+        bannerImage="/Banners/banner 3.jpg"
         products={products}
       />
       <Footer />
