@@ -323,6 +323,7 @@ app.listen(PORT, () => {
   console.log(`📊 Health check: http://localhost:${PORT}/health`);
   console.log(`🔐 Auth endpoints: http://localhost:${PORT}/api/auth`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log('✅ Allowed Origins:', allowedOrigins);
   
   // Start background job for updating product stats
   startStatsUpdateJob();

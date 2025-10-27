@@ -7,7 +7,7 @@ import { Star } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { EnhancedImage } from "@/components/ui/enhanced-image";
 
-interface Product {
+export interface Product {
   id: string;
   name: string;
   description: string;

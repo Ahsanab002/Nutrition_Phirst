@@ -77,7 +77,7 @@ const Account = () => {
     const fullName = `${signupData.firstName} ${signupData.lastName}`.trim();
     
     try {
-      const result = await signup(signupData.email, signupData.password);
+      const result = await signup(signupData.email, signupData.password, fullName);
       
       if (result.success) {
         toast({
