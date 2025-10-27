@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import ProductCardSkeleton from '@/components/ProductCardSkeleton';
+import LeafDecoration from '@/components/LeafDecoration';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -190,7 +191,15 @@ const Products = () => {
       
       <main className="container mx-auto px-4 lg:px-8 py-8">
         {/* Page Header */}
-        <div className="mb-8">
+        <div className="relative mb-8">
+          {/* Decorative leaves */}
+          <div className="pointer-events-none absolute -left-16 top-0">
+            <LeafDecoration className="opacity-30 scale-150 -rotate-12 animate-leaf-slow" size={200} color="var(--tertiary)" />
+          </div>
+          <div className="pointer-events-none absolute right-0 -top-8">
+            <LeafDecoration className="opacity-20 scale-125 rotate-45 animate-leaf-slow-reverse" size={160} color="var(--accent)" />
+          </div>
+
           <div className="flex items-center gap-3 mb-4">
             <currentCategory.icon className="h-6 w-6 icon-accent" />
             <h1 className="text-3xl md:text-4xl font-serif font-bold heading-text">
@@ -280,7 +289,15 @@ const Products = () => {
           </div>
 
           {/* Products Grid */}
-          <div className="flex-1">
+          <div className="flex-1 relative overflow-hidden">
+            {/* Decorative leaves for products section */}
+            <div className="pointer-events-none absolute -left-16 top-1/4">
+              <LeafDecoration className="opacity-25 scale-150 rotate-90 animate-leaf-slow" size={220} color="var(--tertiary)" />
+            </div>
+            <div className="pointer-events-none absolute -right-12 top-1/3">
+              <LeafDecoration className="opacity-20 scale-125 -rotate-45 animate-leaf-slow-reverse" size={180} color="var(--accent)" />
+            </div>
+
             {/* Results Header */}
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
@@ -296,6 +313,14 @@ const Products = () => {
             </div>
 
             {/* Products */}
+            {/* Decorative leaves for products grid */}
+            <div className="pointer-events-none absolute left-0 top-1/3">
+              <LeafDecoration className="opacity-20 scale-90 -rotate-45 animate-leaf-slow" size={180} color="var(--tertiary)" />
+            </div>
+            <div className="pointer-events-none absolute right-0 bottom-1/4">
+              <LeafDecoration className="opacity-25 scale-125 rotate-180 animate-leaf-slow-reverse" size={160} color="var(--accent)" />
+            </div>
+            
             {loading ? (
               <div className={`grid gap-6 ${
                 viewMode === 'grid' 

@@ -10,6 +10,8 @@ import productRoutes from './routes/productRoutes';
 import adminRoutes from './routes/adminRoutes';
 import checkoutRoutes from './routes/checkoutRoutes';
 import { startStatsUpdateJob } from './jobs/updateProductStats';
+import categoryCuratedRoutes from './routes/category-curated';
+
 import fs from 'fs';
 import sharp from 'sharp';
 
@@ -68,6 +70,8 @@ app.use(cors({
 app.use(morgan('combined'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+app.use(categoryCuratedRoutes);
+
 
 // Serve static images with proper decoding for spaces in filenames
 // Use the same origin logic as the main CORS middleware so we don't return a wildcard origin when credentials are enabled

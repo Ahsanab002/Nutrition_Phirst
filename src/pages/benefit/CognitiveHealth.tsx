@@ -6,32 +6,24 @@ const CognitiveHealth = () => {
   const products = [
     {
       id: "cognitive-1",
-      name: "Brain Focus Complex",
-      price: 39.99,
-      originalPrice: 49.99,
-      image: "/backend/Images/13.jpg",
-      description: "Advanced nootropics for enhanced focus and mental clarity"
+      name: "Methylene Blue Cognitive Enhancement",
+      price: 79.99,
+      originalPrice: 99.99,
+      image: "/backend/Images/methylene/methylene jpgs/1ST.jpg",
+      description: "Cognitive enhancement supplement with methylene blue",
+      rating: 5.0,
+      reviewCount: 12,
+      badge: "FEATURED"
     },
     {
       id: "cognitive-2",
-      name: "Memory Support",
-      price: 32.99,
-      image: "/backend/Images/13.jpg",
-      description: "Natural memory enhancement with ginkgo and phosphatidylserine"
-    },
-    {
-      id: "cognitive-3",
-      name: "Mental Performance",
-      price: 35.99,
-      image: "/backend/Images/13.jpg",
-      description: "Cognitive enhancement for peak mental performance"
-    },
-    {
-      id: "cognitive-4",
-      name: "Neuroprotective Blend",
-      price: 42.99,
-      image: "/backend/Images/13.jpg",
-      description: "Protective nutrients for long-term brain health"
+      name: "Neuro Enhancement Complex",
+      price: 74.99,
+      originalPrice: 94.99,
+      image: "/backend/Images/neuro/neuro jpgs/1ST.jpg",
+      description: "Nootropic blend for brain enhancement",
+      rating: 5.0,
+      reviewCount: 12
     }
   ];
 

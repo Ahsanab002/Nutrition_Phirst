@@ -12,11 +12,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { productService, BackendCategory } from '@/services/productService';
 import logo from "@/assets/Logooo.png";
+import LeafDecoration from "@/components/LeafDecoration";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const navigate = useNavigate();
   const { itemCount } = useCart();
+
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setHasScrolled(scrollTop > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [
     { name: "Best Sellers", href: "/products?category=bestsellers" },
@@ -104,44 +117,60 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-tertiary shadow-elegant">
-      <div className="container mx-auto px-4 lg:px-8">
+    <header className={`sticky top-0 z-50 w-full relative overflow-hidden transition-all duration-300 ${
+      hasScrolled 
+        ? 'bg-gradient-to-b from-white/80 via-white/70 to-white/60 backdrop-blur-xl supports-[backdrop-filter]:from-white/70 supports-[backdrop-filter]:to-white/50 border-b border-primary/10 shadow-lg py-0 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:via-accent/5 before:to-primary/5 before:-z-10' 
+        : 'bg-white/30 backdrop-blur-2xl supports-[backdrop-filter]:bg-white/20 border-y border-primary/20 py-2 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/10 before:via-accent/10 before:to-primary/10 before:-z-10'
+    }`}>
+      <div className="container mx-auto px-4 lg:px-8 py-1">
+        {/* Decorative leaves behind the header */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          <LeafDecoration className="absolute -left-8 -top-6 opacity-80 animate-leaf-slow transform hover:scale-110 transition-transform duration-700" size={120} color="var(--tertiary)" />
+          <LeafDecoration className="absolute -right-12 top-6 opacity-70 rotate-12 animate-leaf-slow transform hover:scale-110 transition-transform duration-700" size={160} color="var(--accent)" />
+        </div>
         <div className="flex h-16 items-center justify-between">
           {/* Mobile menu button */}
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden"
+            className="lg:hidden hover:scale-110 transition-transform duration-300"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isMenuOpen ? (
+              <X className="h-5 w-5 text-primary/80 transform rotate-0 transition-all duration-300" />
+            ) : (
+              <Menu className="h-5 w-5 text-primary/80 transform rotate-0 transition-all duration-300" />
+            )}
           </Button>
 
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center space-x-2 font-display text-xl font-medium tracking-tight"
+            className="flex items-center space-x-2 font-display text-xl font-medium tracking-tight transform hover:scale-105 transition-transform duration-300"
           >
             <img
               src={logo}
               alt="Nutrition pHirst"
               style={{ transform: 'scale(5) translateX(10px)' }}
-              className="h-10 w-auto object-contain drop-shadow-sm shrink-0"
+              className="h-10 w-auto object-contain drop-shadow-lg shrink-0 filter brightness-105"
               loading="eager"
               decoding="async"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-12 font-medium">
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center space-x-1 text-base font-serif nav-text transition-colors hover:text-primary">
-                NUTRIENT BY BENEFIT
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <DropdownMenuTrigger className="flex items-center space-x-1 text-base font-serif nav-text transition-all duration-300 hover:text-primary relative group py-2">
+                <span className="relative">
+                  NUTRIENT BY BENEFIT
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </span>
+                <svg className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-screen max-w-none left-0 right-0 p-8 bg-white border-0 shadow-product rounded-none mt-4">
+              <DropdownMenuContent className="w-screen max-w-none left-0 right-0 p-8 bg-gradient-to-b from-white/90 via-white/85 to-white/80 backdrop-blur-xl border-0 shadow-2xl rounded-b-2xl mt-0 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:via-accent/5 before:to-primary/5 before:-z-10 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto">
                   {/*
                     The original static mega-menu (categories + showcases) is kept below commented
@@ -164,12 +193,12 @@ const Header = () => {
                                 navigate(`/products?category=${cat.id}`);
                               }
                             }}
-                            className="flex items-center space-x-3 text-sm hover:text-primary transition-colors py-2 w-full text-left"
+                            className="flex items-center space-x-3 text-sm hover:text-primary transition-all duration-300 py-3 px-4 w-full text-left rounded-xl hover:bg-gradient-to-r hover:from-primary/5 hover:to-accent/5 group relative overflow-hidden backdrop-blur-sm"
                           >
-                            <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                              <cat.icon className="h-4 w-4 text-foreground" />
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:rotate-45 before:translate-x-[-200%] group-hover:before:translate-x-[200%] before:transition-transform before:duration-700">
+                              <cat.icon className="h-5 w-5 text-primary transform transition-all duration-300 group-hover:text-primary group-hover:scale-110 drop-shadow-md" />
                             </div>
-                            <span className="font-medium">
+                            <span className="font-medium tracking-wide">
                               {cat.name.replace(/NAD\+?\s*Supplement/gi, "").trim() || cat.name}
                             </span>
                           </button>
@@ -197,6 +226,13 @@ const Header = () => {
             </Link>
             
             <Link
+              to="/social"
+              className="text-base font-serif nav-text transition-colors"
+            >
+              SOCIAL
+            </Link>
+            
+            <Link
               to="/learn"
               className="text-base font-serif nav-text transition-colors"
             >
@@ -205,26 +241,26 @@ const Header = () => {
           </nav>
 
           {/* Right side icons */}
-          <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <Search className="h-4 w-4 icon-primary" />
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="icon" className="hidden sm:flex hover:scale-110 transition-all duration-300 relative overflow-hidden rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:rotate-45 before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700">
+              <Search className="h-5 w-5 text-primary transition-all duration-300 drop-shadow-md" />
             </Button>
             
-            <Button variant="ghost" size="icon" onClick={() => navigate("/account")}>
-              <User className="h-4 w-4 icon-primary" />
+            <Button variant="ghost" size="icon" onClick={() => navigate("/account")} className="hover:scale-110 transition-all duration-300 relative overflow-hidden rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:rotate-45 before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700">
+              <User className="h-5 w-5 text-primary transition-all duration-300 drop-shadow-md" />
             </Button>
             
             <Button
               variant="ghost"
               size="icon"
-              className="relative"
+              className="relative hover:scale-110 transition-all duration-300 overflow-hidden rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 before:absolute before:inset-0 before:bg-gradient-to-r before:from-white/20 before:to-transparent before:rotate-45 before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700"
               onClick={() => navigate("/cart")}
             >
-              <ShoppingCart className="h-4 w-4 icon-primary" />
+              <ShoppingCart className="h-5 w-5 text-primary transition-all duration-300 drop-shadow-md" />
               {itemCount > 0 && (
                 <Badge
                   variant="destructive"
-                  className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-xs"
+                  className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center text-[0.65rem] font-bold bg-primary animate-pulse"
                 >
                   {itemCount}
                 </Badge>
@@ -234,29 +270,45 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden border-t border-tertiary bg-white shadow-elegant">
-            <nav className="flex flex-col space-y-4 p-4">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-sm font-medium nav-text transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+        <div className={`lg:hidden border-t border-primary/10 bg-gradient-to-b from-white/90 via-white/85 to-white/80 backdrop-blur-xl shadow-2xl transform transition-all duration-300 ease-in-out relative overflow-hidden ${
+          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0 pointer-events-none'
+        } before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:via-accent/5 before:to-primary/5 before:-z-10`}>
+          <nav className="flex flex-col space-y-2 p-6">
+            {menuItems.map((item) => (
               <Link
-                to="/learn"
-                className="text-sm font-medium nav-text transition-colors"
+                key={item.name}
+                to={item.href}
+                className="text-sm font-medium nav-text transition-all duration-300 py-3 px-4 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 hover:text-primary flex items-center space-x-3 group relative overflow-hidden backdrop-blur-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
-                LEARN
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:shadow-lg relative overflow-hidden">
+                  <Grid3X3 className="h-4 w-4 text-primary drop-shadow-md" />
+                </div>
+                <span>{item.name}</span>
               </Link>
-            </nav>
-          </div>
-        )}
+            ))}
+            <Link
+              to="/social"
+              className="text-sm font-medium nav-text transition-all duration-300 py-3 px-4 rounded-lg hover:bg-primary/5 hover:text-primary flex items-center space-x-3"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                <Heart className="h-4 w-4 text-primary/80" />
+              </div>
+              <span>SOCIAL</span>
+            </Link>
+            <Link
+              to="/learn"
+              className="text-sm font-medium nav-text transition-all duration-300 py-3 px-4 rounded-lg hover:bg-primary/5 hover:text-primary flex items-center space-x-3"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                <Zap className="h-4 w-4 text-primary/80" />
+              </div>
+              <span>LEARN</span>
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );

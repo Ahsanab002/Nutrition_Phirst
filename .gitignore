@@ -23,3 +23,16 @@ dist-ssr
 *.sln
 *.sw?
 .env
+# Node & build
+node_modules/
+build/
+dist/
+
+# Archives & logs
+*.zip
+*.log
+
+# Env
+.env
+.env.*
+

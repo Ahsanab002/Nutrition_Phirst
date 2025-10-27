@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProductGrid from "@/components/ProductGrid";
+import BestSellers from "@/components/BestSellers";
 // import ClinicalResults from "@/components/ClinicalResults";
 import FocusBanner from "@/components/FocusBanner";
+import LeafDecoration from "@/components/LeafDecoration";
 // ...existing code...
 import PressLogos from "@/components/PressLogos";
 import Footer from "@/components/Footer";
@@ -20,12 +22,40 @@ const Index = () => {
       <main>
         <Hero />
         <PressLogos />
-        <PromoBanner />
+        <BestSellers />
+        <div className="relative overflow-hidden">
+          {/* Decorative leaves for PromoBanner */}
+          <div className="pointer-events-none absolute left-1/4 -top-12">
+            <LeafDecoration className="opacity-20 scale-90 -rotate-45 animate-leaf-slow" size={160} color="var(--tertiary)" />
+          </div>
+          <div className="pointer-events-none absolute right-1/3 -bottom-8">
+            <LeafDecoration className="opacity-25 scale-75 rotate-90 animate-leaf-slow-reverse" size={140} color="var(--accent)" />
+          </div>
+          <PromoBanner />
+        </div>
+        
         {/* <ClinicalResults /> */}
-        <ProductGrid />
+        <div className="relative overflow-hidden">
+          {/* Decorative leaves for ProductGrid */}
+          <div className="pointer-events-none absolute -left-12 top-1/4">
+            <LeafDecoration className="opacity-30 scale-150 -rotate-12 animate-leaf-slow" size={200} color="var(--tertiary)" />
+          </div>
+          <div className="pointer-events-none absolute right-0 bottom-1/4">
+            <LeafDecoration className="opacity-20 scale-125 rotate-45 animate-leaf-slow-reverse" size={180} color="var(--accent)" />
+          </div>
+          <ProductGrid />
+        </div>
         
         {/* Brain Health Banner */}
-        <section className="py-16 bg-background">
+        <section className="relative py-16 bg-background overflow-hidden">
+          {/* Decorative leaves */}
+          <div className="pointer-events-none absolute -left-16 top-1/3">
+            <LeafDecoration className="opacity-30 scale-150 -rotate-45 animate-leaf-slow" size={220} color="var(--tertiary)" />
+          </div>
+          <div className="pointer-events-none absolute -right-12 bottom-1/4">
+            <LeafDecoration className="opacity-25 scale-125 rotate-12 animate-leaf-slow-reverse" size={180} color="var(--accent)" />
+          </div>
+          
           <div className="container mx-auto px-4 lg:px-8">
             <div className="relative rounded-2xl overflow-hidden shadow-product">
               <div
@@ -57,7 +87,15 @@ const Index = () => {
         </section>
 
         {/* Detox & Cleanse Banner */}
-        <section className="py-16 bg-background">
+        <section className="relative py-16 bg-background overflow-hidden">
+          {/* Decorative leaves */}
+          <div className="pointer-events-none absolute left-1/4 top-12">
+            <LeafDecoration className="opacity-20 scale-90 rotate-180 animate-leaf-slow" size={160} color="var(--tertiary)" />
+          </div>
+          <div className="pointer-events-none absolute -right-16 top-1/3">
+            <LeafDecoration className="opacity-25 scale-150 -rotate-90 animate-leaf-slow-reverse" size={200} color="var(--accent)" />
+          </div>
+          
           <div className="container mx-auto px-4 lg:px-8">
             <div className="relative rounded-2xl overflow-hidden shadow-product">
               <div
@@ -89,7 +127,15 @@ const Index = () => {
         </section>
 
         {/* Anti-Aging Banner */}
-        <section className="py-16 bg-background">
+        <section className="relative py-16 bg-background overflow-hidden">
+          {/* Decorative leaves */}
+          <div className="pointer-events-none absolute -left-8 bottom-1/4">
+            <LeafDecoration className="opacity-25 scale-110 rotate-45 animate-leaf-slow" size={180} color="var(--tertiary)" />
+          </div>
+          <div className="pointer-events-none absolute right-1/3 top-8">
+            <LeafDecoration className="opacity-20 scale-125 -rotate-120 animate-leaf-slow-reverse" size={160} color="var(--accent)" />
+          </div>
+          
           <div className="container mx-auto px-4 lg:px-8">
             <div className="relative rounded-2xl overflow-hidden shadow-product">
               <div

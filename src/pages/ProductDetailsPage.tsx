@@ -78,14 +78,27 @@ const ProductDetailsPage = () => {
 
                 <div className="flex items-center gap-2 mb-3">
                   <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-5 h-5 ${i < Math.floor(product.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-300 dark:text-muted"}`}
-                      />
-                    ))}
+                    {(() => {
+                      const rounded = Math.round(product.rating * 2) / 2;
+                      const full = Math.floor(rounded);
+                      const hasHalf = rounded - full === 0.5;
+                      return [...Array(5)].map((_, i) => {
+                        if (i < full) return <svg key={i} className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ color: '#f6c945' }}><path fill="currentColor" d="M12 .587l3.668 7.431 8.064 1.17-5.832 5.686 1.376 8.02L12 18.897l-7.276 3.997 1.376-8.02L.268 9.188l8.064-1.17z"/></svg>;
+                        if (i === full && hasHalf) {
+                          return (
+                            <span key={i} className="relative w-5 h-5 inline-block">
+                              <Star className="absolute inset-0 w-5 h-5 text-gray-300 dark:text-muted" />
+                              <svg className="absolute inset-0 w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ clipPath: 'inset(0 50% 0 0)', color: '#f6c945' }}>
+                                <path fill="currentColor" d="M12 .587l3.668 7.431 8.064 1.17-5.832 5.686 1.376 8.02L12 18.897l-7.276 3.997 1.376-8.02L.268 9.188l8.064-1.17z" />
+                              </svg>
+                            </span>
+                          );
+                        }
+                        return <Star key={i} className="w-5 h-5 text-gray-300 dark:text-muted" />;
+                      });
+                    })()}
                   </div>
-                  <span className="text-base text-muted-foreground">{product.rating} / 5</span>
+                  <span className="text-base text-muted-foreground">{(Math.round(product.rating*10)/10).toFixed(1)} / 5</span>
                   <span className="text-sm text-muted-foreground ml-2">({product.reviewCount} Reviews)</span>
                 </div>
 

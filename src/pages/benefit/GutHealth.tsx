@@ -5,34 +5,27 @@ import BenefitPageTemplate from "@/components/BenefitPageTemplate";
 const GutHealth = () => {
   const products = [
     {
-      id: "gut-1",
-      name: "Probiotic Complex",
-      price: 34.99,
-      originalPrice: 44.99,
-      image: "/backend/Images/neuro/neuro jpgs/1st.jpg",
-      description: "50 billion CFU probiotic blend for digestive wellness"
+      id: "parasite-cleanse",
+      name: "Parasite Cleanse Formula",
+      description: "Natural parasite cleanse with herbs",
+      price: 44.99,
+      originalPrice: 59.99,
+      rating: 5,
+      reviewCount: 12,
+      image: "/backend/Images/parasite/parasite-min.jpg",
+      badge: "Featured",
     },
     {
-      id: "gut-2",
-      name: "Digestive Enzymes",
-      price: 28.99,
-      image: "/backend/Images/methylene/methylene jpgs/1ST.jpg",
-      description: "Comprehensive enzyme formula for better digestion"
+      id: "methylene-blue",
+      name: "Methylene Blue Cognitive Enhancement",
+      description: "Cognitive enhancement supplement with methylene blue",
+      price: 79.99,
+      originalPrice: 99.99,
+      rating: 5,
+      reviewCount: 12,
+      image: "/backend/Images/methylene/methylene blue-min.jpg",
+      badge: "Featured",
     },
-    {
-      id: "gut-3",
-      name: "Fiber Support",
-      price: 22.99,
-      image: "/backend/Images/13.jpg",
-      description: "Prebiotic fiber blend for gut microbiome health"
-    },
-    {
-      id: "gut-4",
-      name: "Gut Repair Formula",
-      price: 39.99,
-      image: "/backend/Images/13.jpg",
-      description: "Healing nutrients for digestive tract repair"
-    }
   ];
 
   return (

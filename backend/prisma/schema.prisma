@@ -327,6 +327,18 @@ model Review {
   @@map("reviews")
 }
 
+/// Curated list of products per category (used to control which items show on each category page)
+model CuratedCategoryProduct {
+  id           BigInt @id @default(autoincrement())
+  categorySlug String @map("category_slug")
+  productSlug  String @map("product_slug")
+  displayOrder Int    @map("display_order")
+
+  @@unique([categorySlug, productSlug])
+  @@map("curated_category_products")
+}
+
+
 // Wishlist model
 model WishlistItem {
   id        String   @id @default(cuid())

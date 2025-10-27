@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ProductCard from "@/components/ProductCard";
+import LeafDecoration from "@/components/LeafDecoration";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
+import { OptimizedBackground } from "@/components/ui/optimized-background";
 
 interface BenefitPageTemplateProps {
   title: string;
   description: string;
   bannerImage?: string;
-  products: Array<{
+  products?: Array<{
     id: string;
     name: string;
     price: number;
@@ -27,16 +29,19 @@ const BenefitPageTemplate = ({ title, description, bannerImage, products }: Bene
     <div className="min-h-screen bg-background">
       {/* Hero Banner */}
       <section className="relative w-full">
+        {/* leaf accents */}
+        <div className="pointer-events-none absolute inset-0">
+          <LeafDecoration className="absolute -left-8 -bottom-8 opacity-70 animate-leaf-slow" size={140} color="var(--tertiary)" />
+          <LeafDecoration className="absolute right-8 top-6 opacity-60 rotate-12 animate-leaf-slow" size={180} color="var(--accent)" />
+        </div>
         {/* Background image */}
-        <div
-          className="w-full h-[360px] md:h-[460px] lg:h-[520px] bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${bannerImage || '/backend/Images/13.jpg'}')`,
-          }}
+        <OptimizedBackground
+          src={bannerImage || '/backend/Images/13.jpg'}
+          className="w-full h-[360px] md:h-[460px] lg:h-[520px]"
         />
 
-        {/* Overlay content */}
-        <div className="absolute inset-0 flex items-center">
+  {/* Overlay content */}
+  <div className="absolute inset-0 flex items-center z-10">
           <div className="container mx-auto px-4 lg:px-8">
             <div
               className="max-w-xl bg-black/10 backdrop-blur-[2px] rounded-xl p-6 md:p-8 md:pb-12 lg:pb-16 shadow-product translate-x-[-8px] md:translate-x-[-16px] lg:translate-x-[-24px]"
@@ -60,28 +65,30 @@ const BenefitPageTemplate = ({ title, description, bannerImage, products }: Bene
         </div>
       </section>
 
-      {/* Products Section */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground tracking-tight mb-4">
-              {title} Products
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover our premium {title.toLowerCase()} solutions designed to support your wellness journey.
-            </p>
-          </div>
+      {/* Products Section - render only when products are provided */}
+      {products && products.length > 0 && (
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-display font-semibold text-foreground tracking-tight mb-4">
+                {title} Products
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Discover our premium {title.toLowerCase()} solutions designed to support your wellness journey.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 };

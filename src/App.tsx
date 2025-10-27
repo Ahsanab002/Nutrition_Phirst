@@ -38,6 +38,7 @@ import DetoxCleanse from "./pages/benefit/DetoxCleanse";
 import NADSupplements from "./pages/benefit/NADSupplements";
 import AdminDashbord from "./pages/AdminDashbord";
 import { RequireAdmin } from "./components/ProtectedRoute";
+import Social from "./pages/Social";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const AppRouter = () => {
       <Route path="/" element={<Index />} />
       <Route path="/products" element={<Products />} />
       <Route path="/product/:id" element={<ProductDetailsPage />} />
+      <Route path="/social" element={<Social />} />
       <Route path="/learn" element={<Learn />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/checkout" element={<Checkout />} />

@@ -49,9 +49,8 @@ const Beauty = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <BenefitPageTemplate
-        title="Beauty Support"
-        description="Comprehensive beauty supplements designed to enhance your natural radiance, support healthy skin, hair, and nails from within."
-        products={products}
+        title="Beauty"
+        description="Targeted nutrients to support glowing skin, hair, and nails."
       />
       <Footer />
     </div>

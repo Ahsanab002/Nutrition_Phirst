@@ -2,6 +2,7 @@ import { useState } from "react";
 import banner1 from '@/assets/BANNER 3.jpg';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LeafDecoration from "@/components/LeafDecoration";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -68,6 +69,14 @@ const Learn = () => {
       <main>
         {/* Hero Banner */}
         <section className="relative w-full h-64 md:h-96 flex items-center justify-center overflow-hidden">
+          {/* Decorative leaves */}
+          <div className="pointer-events-none absolute -left-12 top-12 z-20">
+            <LeafDecoration className="opacity-40 scale-150 -rotate-12 animate-leaf-slow" size={200} color="var(--accent)" />
+          </div>
+          <div className="pointer-events-none absolute right-0 bottom-8 z-20">
+            <LeafDecoration className="opacity-30 scale-125 rotate-45 animate-leaf-slow-reverse" size={180} color="var(--tertiary)" />
+          </div>
+
           <img
             src={banner1}
             alt="Learn Banner"
@@ -115,7 +124,15 @@ const Learn = () => {
         */}
 
         {/* Featured Article */}
-        <section className="py-12">
+        <section className="relative py-12 overflow-hidden">
+          {/* Decorative leaves */}
+          <div className="pointer-events-none absolute -left-16 top-1/4">
+            <LeafDecoration className="opacity-20 scale-150 rotate-90 animate-leaf-slow" size={220} color="var(--tertiary)" />
+          </div>
+          <div className="pointer-events-none absolute right-1/4 bottom-0">
+            <LeafDecoration className="opacity-25 scale-90 -rotate-45 animate-leaf-slow-reverse" size={160} color="var(--accent)" />
+          </div>
+
           <div className="container mx-auto px-4 lg:px-8">
             <div className="mb-8">
               <Badge className="mb-4">Featured Article</Badge>
@@ -153,37 +170,55 @@ const Learn = () => {
             </div>
 
             {/* Article Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {articles.slice(1).map((article) => (
-                <Card key={article.id} className="group hover:shadow-hover transition-elegant">
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary">{article.category}</Badge>
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Clock className="w-3 h-3" />
-                        {article.readTime}
+            <div className="relative">
+              {/* Decorative leaves */}
+              <div className="pointer-events-none absolute -left-8 top-1/3">
+                <LeafDecoration className="opacity-30 scale-100 -rotate-180 animate-leaf-slow" size={140} color="var(--tertiary)" />
+              </div>
+              <div className="pointer-events-none absolute right-0 bottom-1/4">
+                <LeafDecoration className="opacity-20 scale-125 rotate-12 animate-leaf-slow-reverse" size={180} color="var(--accent)" />
+              </div>
+
+              <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Decorative leaves for grid */}
+                <div className="pointer-events-none absolute -left-8 top-1/3">
+                  <LeafDecoration className="opacity-30 scale-100 -rotate-180 animate-leaf-slow" size={140} color="var(--tertiary)" />
+                </div>
+                <div className="pointer-events-none absolute right-0 bottom-1/4">
+                  <LeafDecoration className="opacity-20 scale-125 rotate-12 animate-leaf-slow-reverse" size={180} color="var(--accent)" />
+                </div>
+
+                {articles.slice(1).map((article) => (
+                  <Card key={article.id} className="group hover:shadow-hover transition-elegant">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge variant="secondary">{article.category}</Badge>
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <Clock className="w-3 h-3" />
+                          {article.readTime}
+                        </div>
                       </div>
-                    </div>
-                    <CardTitle className="font-serif text-lg group-hover:text-primary transition-colors">
-                      {article.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                      {article.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">{article.date}</span>
-                      <a href={article.link} target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" size="sm" className="group p-0 h-auto">
-                          Read More
-                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </a>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                      <CardTitle className="font-serif text-lg group-hover:text-primary transition-colors">
+                        {article.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                        {article.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground">{article.date}</span>
+                        <a href={article.link} target="_blank" rel="noopener noreferrer">
+                          <Button variant="ghost" size="sm" className="group p-0 h-auto">
+                            Read More
+                            <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                          </Button>
+                        </a>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
 
           </div>

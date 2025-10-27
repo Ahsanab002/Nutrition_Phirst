@@ -19,20 +19,6 @@ const Energy = () => {
       image: "/backend/Images/13.jpg",
       description: "Cellular energy production with CoQ10 and NAD+"
     },
-    {
-      id: "energy-3",
-      name: "Energy Gummies",
-      price: 24.99,
-      image: "/backend/Images/13.jpg",
-      description: "Delicious energy gummies for on-the-go vitality"
-    },
-    {
-      id: "energy-4",
-      name: "Adrenal Support",
-      price: 32.99,
-      image: "/backend/Images/13.jpg",
-      description: "Adaptogenic herbs for stress-related fatigue"
-    }
   ];
 
   return (
@@ -41,7 +27,6 @@ const Energy = () => {
       <BenefitPageTemplate
         title="Energy Support"
         description="Natural energy enhancement solutions to help you feel energized, focused, and ready to tackle your day with sustained vitality."
-        products={products}
       />
       <Footer />
     </div>

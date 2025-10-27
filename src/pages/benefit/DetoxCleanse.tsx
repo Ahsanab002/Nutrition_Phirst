@@ -24,25 +24,6 @@ const DetoxCleanse = () => {
       description: "Natural parasite cleanse formula with powerful herbal ingredients",
       rating: 4.6,
       reviewCount: 156
-    },
-    {
-      id: "detox-3",
-      name: "Liver Detox Support",
-      price: 39.99,
-      image: "/backend/Images/13.jpg",
-      description: "Comprehensive liver support with milk thistle and NAC",
-      rating: 4.5,
-      reviewCount: 234,
-      badge: "NEW"
-    },
-    {
-      id: "detox-4",
-      name: "Colon Cleanse Formula",
-      price: 32.99,
-      image: "/backend/Images/13.jpg",
-      description: "Gentle colon cleanse with natural fiber and herbs",
-      rating: 4.4,
-      reviewCount: 123
     }
   ];
 

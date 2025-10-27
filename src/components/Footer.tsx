@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Instagram, Facebook, Twitter, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import LeafDecoration from "@/components/LeafDecoration";
 
 const Footer = () => {
   const footerSections = [
@@ -54,22 +55,29 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full text-base-800 py-8 text-center" style={{ background: '#D7DED3' }}>
+    <footer className="w-full text-base-800 py-8 text-center relative overflow-hidden" style={{ background: 'linear-gradient(180deg, var(--background) 0%, var(--muted) 100%)' }}>
+      {/* Decorative leaves */}
+      <div className="pointer-events-none absolute inset-0">
+        <LeafDecoration className="absolute -left-12 top-24 opacity-40 scale-150 rotate-45" size={180} color="var(--tertiary)" />
+        <LeafDecoration className="absolute right-[-3rem] top-12 opacity-30 scale-125 -rotate-12" size={200} color="var(--accent)" />
+        <LeafDecoration className="absolute left-1/4 bottom-[-2rem] opacity-20 scale-90" size={160} color="var(--tertiary)" />
+        <LeafDecoration className="absolute right-1/3 bottom-16 opacity-25 scale-75 rotate-90" size={140} color="var(--accent)" />
+      </div>
       <div className="w-full">
         {/* Newsletter Signup */}
-        <div className="py-12 border-b border-border">
+        <div className="py-12 relative">
           <div className="max-w-md mx-auto text-center space-y-4">
-            <h3 className="text-xl font-serif font-semibold text-foreground">
+            <h3 className="text-2xl font-serif font-semibold text-foreground">
               Stay in the know
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-muted-foreground max-w-sm mx-auto">
               Get exclusive access to new products, wellness tips, and special offers.
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-3 max-w-sm mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1"
+                className="flex-1 bg-white/90 backdrop-blur border-tertiary focus:border-accent"
               />
               <Button variant="premium" size="sm">
                 Subscribe
@@ -80,18 +88,16 @@ const Footer = () => {
 
         {/* Main Footer Content */}
         <div
-          className="w-full py-12"
-          style={{
-            background: "linear-gradient(135deg, #6B7C6B 0%, #D7DED3 100%)"
-          }}
+          className="w-full py-12 relative bg-gradient-footer backdrop-blur-sm"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
             {/* Brand Section */}
-            <div className="col-span-2 md:col-span-4 lg:col-span-1 space-y-4">
+            <div className="col-span-2 md:col-span-4 lg:col-span-1 space-y-6">
               <Link to="/" className="inline-block">
-                <span className="text-2xl font-serif font-bold text-foreground">Nutrition pHirst</span>
+                <span className="text-3xl font-serif font-bold text-foreground tracking-tight">Nutrition pHirst</span>
               </Link>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed max-w-xs">
                 Premium wellness supplements designed for modern life. 
                 Scientifically-backed solutions for optimal health and cognitive performance.
               </p>
@@ -116,16 +122,16 @@ const Footer = () => {
 
             {/* Footer Links */}
             {footerSections.map((section) => (
-              <div key={section.title} className="space-y-4">
-                <h4 className="font-medium text-foreground tracking-wide">
+              <div key={section.title} className="space-y-6">
+                <h4 className="font-serif font-semibold text-lg text-foreground">
                   {section.title}
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {section.links.map((link) => (
                     <li key={link.name}>
                       <Link
                         to={link.href}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-base text-muted-foreground hover:text-accent transition-colors"
                       >
                         {link.name}
                       </Link>
@@ -134,6 +140,7 @@ const Footer = () => {
                 </ul>
               </div>
             ))}
+            </div>
           </div>
         </div>
 

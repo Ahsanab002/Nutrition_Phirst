@@ -256,6 +256,23 @@
     box-shadow: 0 20px 40px rgba(7, 30, 7, 0.25), 0 8px 16px rgba(7, 30, 7, 0.15);
   }
 
+  /* Leaf animation for subtle motion */
+  .animate-leaf-slow {
+    animation: leafFloat 9s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  @keyframes leafFloat {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-6px) rotate(3deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(4px) rotate(-2deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+
+  /* Small helper rotate utility (used for fine decorative placement) */
+  .rotate-12 { transform: rotate(12deg); }
+
   /* Enhanced selected/active states - Professional Button Styling */
   .btn-selected {
     background: linear-gradient(135deg, var(--primary-from) 0%, var(--primary-mid) 40%, var(--primary-to) 100%);
