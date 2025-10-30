@@ -384,18 +384,18 @@ const Header = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-50 w-full relative overflow-hidden transition-all duration-300 ${
+    <header style={{ height: 'clamp(56px, 8vh, 72px)' }} className={`sticky top-0 z-50 w-full relative overflow-hidden transition-all duration-300 ${
       hasScrolled 
         ? 'bg-gradient-to-b from-white/80 via-white/70 to-white/60 backdrop-blur-xl supports-[backdrop-filter]:from-white/70 supports-[backdrop-filter]:to-white/50 border-b border-primary/10 shadow-lg py-0 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/5 before:via-accent/5 before:to-primary/5 before:-z-10' 
         : 'bg-white/30 backdrop-blur-2xl supports-[backdrop-filter]:bg-white/20 border-y border-primary/20 py-2 before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary/10 before:via-accent/10 before:to-primary/10 before:-z-10'
-    }`}>
-      <div className="container mx-auto px-4 lg:px-8 py-1">
+  }`}>
+  <div className="container mx-auto px-4 lg:px-8 py-0">
         {/* Decorative leaves behind the header */}
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <LeafDecoration className="absolute -left-8 -top-6 opacity-80 animate-leaf-slow transform hover:scale-110 transition-transform duration-700" size={120} color="var(--tertiary)" />
           <LeafDecoration className="absolute -right-12 top-6 opacity-70 rotate-12 animate-leaf-slow transform hover:scale-110 transition-transform duration-700" size={160} color="var(--accent)" />
         </div>
-        <div className="flex h-16 items-center justify-between">
+  <div className="flex h-full items-center justify-between">
           {/* Mobile menu button */}
           <Button
             variant="ghost"

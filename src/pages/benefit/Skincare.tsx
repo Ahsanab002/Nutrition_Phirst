@@ -12,7 +12,7 @@ const Skincare = () => {
       originalPrice: 69.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/kojic jpgs/kojic acid serum-min.jpg",
+      image: "/backend/Images/kojic_jpgs/kojic acid serum-min.jpg",
       badge: "Featured",
     },
     {
@@ -33,7 +33,7 @@ const Skincare = () => {
       originalPrice: 79.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/retinol/retinol.jpg",
+      image: "/backend/Images/retinol/retinoljpgs/1st.jpg",
       badge: "Featured",
     },
   ];
