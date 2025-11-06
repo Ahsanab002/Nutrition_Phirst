@@ -17,7 +17,7 @@
 const CATEGORY_NAME_MAP: Record<string, string> = {
   'anti-aging': 'Anti Aging NAD+ Supplement',
   'cognitive-health': 'Brain Health',
-  'detox-cleanse': 'Digestive',
+  'detox-cleanse': 'Detox & Cleanse',
   'nad-supplements': 'NAD+ Gummies Energy',
 };
 

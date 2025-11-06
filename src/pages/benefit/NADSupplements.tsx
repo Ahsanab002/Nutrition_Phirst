@@ -6,13 +6,13 @@ const NADSupplements = () => {
   const products = [
     {
       id: "nad-gummies",
-      name: "NAD+ Nicotinamide Riboside Gummies",
-      description: "NAD+ anti-aging gummies for longevity",
+      name: "NAD+ Nicotinamide Riboside ",
+      description: "NAD+ anti-aging for longevity",
       price: 89.99,
       originalPrice: 119.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/nad + jpgs/nad+gummies-min.jpg",
+      image: "/backend/Images/nad_jpgs/1st.jpg",
       badge: "Featured",
     }
   ];
@@ -21,7 +21,7 @@ const NADSupplements = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <BenefitPageTemplate
-        title="NAD+ Supplements"
+        title="Energy"
         description="Enhance your cellular energy and support healthy aging with our premium NAD+ supplements for longevity and vitality."
         bannerImage="/Banners/banner 9.jpg"
         products={products}

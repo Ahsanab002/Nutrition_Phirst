@@ -66,7 +66,7 @@ const products = [
     comparePrice: 79.99,
     categorySlug: 'anti-aging-nad-supplement',
     tags: ['retinol', 'collagen', 'anti-aging', 'wrinkles', 'peptides'],
-    imageFolder: 'retinol/retinol jpgs/retinol jpgs',
+    imageFolder: 'retinol/retinoljpgs/retinoljpgs/',
     isFeatured: true,
     weight: 1.5
   },

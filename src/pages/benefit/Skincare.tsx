@@ -12,18 +12,19 @@ const Skincare = () => {
       originalPrice: 69.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/kojic_jpgs/kojic acid serum-min.jpg",
+      image: "/backend/Images/kojic_jpgs/1ST.jpg",
       badge: "Featured",
     },
     {
-      id: "multivitamin-complex",
-      name: "Multivitamin Complex",
-      description: "Complete daily multivitamin",
-      price: 24.99,
-      rating: 5,
-      reviewCount: 12,
-      image: "/backend/Images/listings/multivitamin.jpg",
-      badge: "Featured",
+      id: "matrixyl-peptide-complex",
+      name: "Matrixyl 3000+ Argireline Peptide Cream",
+      price: 69.99,
+      originalPrice: 89.99,
+      image: "/backend/Images/matrixyl/1st.png",
+      description:
+        "Professional Matrixyl peptide complex that supports collagen synthesis and helps reduce the appearance of fine lines.",
+      rating: 4.8,
+      reviewCount: 312
     },
     {
       id: "retinol-collagen-cream",
@@ -33,7 +34,7 @@ const Skincare = () => {
       originalPrice: 79.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/retinol/retinoljpgs/1st.jpg",
+      image: "/backend/Images/retinol/retinoljpgs/retinoljpgs/1ST.jpg",
       badge: "Featured",
     },
   ];
@@ -44,7 +45,7 @@ const Skincare = () => {
       <BenefitPageTemplate
         title="Skincare"
         description="Transform your skin with our premium skincare collection featuring scientifically-backed ingredients for healthy, radiant skin."
-        bannerImage="/Banners/banner 16.jpg"
+        bannerImage="/Banners/banner 10.jpg"
         products={products}
       />
       <Footer />

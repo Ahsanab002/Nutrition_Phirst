@@ -74,7 +74,7 @@ const AntiAging = () => {
       name: "Matrixyl Peptide Complex Serum",
       price: 69.99,
       originalPrice: 89.99,
-      image: "/backend/Images/matrixyl/matrixyl jpgs/1ST.jpg",
+      image: "/backend/Images/matrixyl/1st.png",
       description:
         "Professional Matrixyl peptide complex that supports collagen synthesis and helps reduce the appearance of fine lines.",
       rating: 4.8,
@@ -85,7 +85,7 @@ const AntiAging = () => {
       name: "NAD+ Nicotinamide Riboside Gummies",
       price: 69.99,
       originalPrice: 89.99,
-      image: "/backend/Images/nad + jpgs/1ST.jpg",
+      image: "/backend/Images/nad_jpgs/1st.jpg",
       description:
         "Supports healthy aging and cellular energy by helping raise NAD+ levels.",
       rating: 4.9,

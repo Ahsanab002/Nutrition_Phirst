@@ -12,7 +12,7 @@ const GutHealth = () => {
       originalPrice: 59.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/parasite/parasite-min.jpg",
+      image: "/backend/Images/parasite/parasite_jpgs/1st.jpg",
       badge: "Featured",
     },
     {
@@ -23,7 +23,7 @@ const GutHealth = () => {
       originalPrice: 99.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/methylene/methylene blue-min.jpg",
+      image: "/backend/Images/methyleneblue/MB.png",
       badge: "Featured",
     },
   ];

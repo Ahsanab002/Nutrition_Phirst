@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { imageService } from '@/services/imageService';
+import { resolveImage, resolveSrcSet } from '@/lib/img'; // ← added
 
 export interface EnhancedImageProps {
   src: string;
@@ -36,36 +37,39 @@ export const EnhancedImage = ({
   const [error, setError] = useState(false);
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
-  // Generate responsive srcSet
-  const srcSet = props.srcSet || imageService.generateSrcSet(src, [320, 640, 768, 1024, 1280, 1536], quality);
-  const { src: webpSrc, fallback: jpegSrc } = imageService.getImageWithFallback(src, quality);
+  // ✅ Normalize the incoming src to your Railway base
+  const normalizedSrc = resolveImage(src);
+
+  // Generate responsive srcSet (then normalize it)
+  const rawSrcSet =
+    props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+  const finalSrcSet = resolveSrcSet(rawSrcSet);
+
+  // Get webp/fallback from service, then normalize those too
+  const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
+  const webpSrc = resolveImage(webpSrcRaw);
+  const jpegSrc = resolveImage(jpegSrcRaw);
 
   useEffect(() => {
-    // Reset states when src changes
     setIsLoading(true);
     setError(false);
 
-    // Get blur placeholder if blur effect is enabled
     if (blur) {
-      setBlurUrl(imageService.getPlaceholderUrl(src));
+      const raw = imageService.getPlaceholderUrl(normalizedSrc);
+      setBlurUrl(resolveImage(raw));
     }
 
-    // Preload image if priority is true
     if (priority) {
-      imageService.preloadImage(src);
+      imageService.preloadImage(normalizedSrc);
     }
-  }, [src, priority, blur]);
+  }, [normalizedSrc, priority, blur]);
 
-  const handleLoad = () => {
-    setIsLoading(false);
-  };
-
+  const handleLoad = () => setIsLoading(false);
   const handleError = () => {
     setError(true);
     setIsLoading(false);
   };
 
-  // Determine loading and decoding strategies
   const loading = userLoading ?? (priority ? 'eager' : 'lazy');
   const decoding = userDecoding ?? (priority ? 'sync' : 'async');
 
@@ -88,19 +92,13 @@ export const EnhancedImage = ({
       {/* Main Image */}
       <picture>
         {/* WebP version */}
-        <source
-          type="image/webp"
-          srcSet={srcSet}
-          sizes={sizes}
-        />
-        
+        <source type="image/webp" srcSet={finalSrcSet} sizes={sizes} />
+
         {/* Fallback version */}
         <img
           src={error ? '/placeholder.svg' : jpegSrc}
           alt={alt}
-          className={`${className} ${
-            isLoading ? 'opacity-0' : 'opacity-100'
-          } transition-opacity duration-300 ease-in-out`}
+          className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ease-in-out`}
           width={width}
           height={height}
           onLoad={handleLoad}

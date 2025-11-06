@@ -14,7 +14,7 @@ const bestSellerData: Product[] = [
     originalPrice: 69.99,
     rating: 5,
     reviewCount: 12,
-    image: "/backend/Images/kojic jpgs/1ST.jpg",
+    image: "/backend/Images/kojic_jpgs/1ST.jpg",
     badge: "Best Seller",
   },
   {
@@ -25,20 +25,19 @@ const bestSellerData: Product[] = [
     originalPrice: 59.99,
     rating: 5,
     reviewCount: 12,
-    image: "/backend/Images/parasite/parasite jpgs/1st.jpg",
+    image: "/backend/Images/parasite/parasite_jpgs/1st.jpg",
     badge: "Best Seller",
   },
   {
-    id: "methylene-blue",
-    name: "Methylene Blue Cognitive Enhancement",
-    description: "Cognitive enhancement supplement with methylene blue",
-    price: 79.99,
-    originalPrice: 99.99,
-    rating: 5,
-    reviewCount: 12,
-    image: "/backend/Images/methylene/methylene jpgs/1ST.jpg",
-    badge: "Best Seller",
-  },
+      id: "cognitive-2",
+      name: "Neuro Enhancement Complex",
+      price: 74.99,
+      originalPrice: 94.99,
+      image: "/backend/Images/neuro/neuro_jpgs/1st.jpg",
+      description: "Nootropic blend for brain enhancement",
+      rating: 5.0,
+      reviewCount: 12
+    }
 ];
 
 const BestSellers = () => {

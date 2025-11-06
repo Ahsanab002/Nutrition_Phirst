@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ProductGrid from "@/components/ProductGrid";
+// import ProductGrid from "@/components/ProductGrid";
 import BestSellers from "@/components/BestSellers";
 // import ClinicalResults from "@/components/ClinicalResults";
 import FocusBanner from "@/components/FocusBanner";
@@ -43,7 +43,7 @@ const Index = () => {
           <div className="pointer-events-none absolute right-0 bottom-1/4">
             <LeafDecoration className="opacity-20 scale-125 rotate-45 animate-leaf-slow-reverse" size={180} color="var(--accent)" />
           </div>
-          <ProductGrid />
+          {/* <ProductGrid /> */}
         </div>
         
         {/* Brain Health Banner */}
@@ -61,7 +61,7 @@ const Index = () => {
               <div
                 className="w-full h-[400px] md:h-[500px] bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('/Banners/banner 3.jpg')",
+                  backgroundImage: "url('/Banners/Banner17.jpg')",
                 }}
               />
               <div className="absolute inset-0 bg-black/20 flex items-center">

@@ -63,7 +63,7 @@ const INPUTS: Array<{ dir: string; product: string; categoryPath: string }> = [
     categoryPath: 'Supplements > Detox & Gut Health',
   },
   {
-    dir: 'C:/Users/arqam/Downloads/NP/backend/Images/listings/retinol listing images',
+    dir: 'C:/Users/arqam/Downloads/NP/backend/Images/retinol/retinoljpgs/retinoljpgs',
     product: 'Retinol + Collagen Cream',
     categoryPath: 'Skincare > Face > Anti-Aging',
   },
