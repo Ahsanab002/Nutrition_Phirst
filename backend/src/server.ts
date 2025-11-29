@@ -19,7 +19,8 @@ import sharp from 'sharp';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+// ✅ Make PORT a number, not string | 5000
+const PORT: number = Number(process.env.PORT) || 5000;
 
 // ----- CORS ORIGIN SETUP -----
 /**
@@ -35,8 +36,7 @@ const defaultFrontendOrigins = [
 ];
 
 const allowedOrigins = (
-  process.env.FRONTEND_URL ||
-  defaultFrontendOrigins.join(',')
+  process.env.FRONTEND_URL || defaultFrontendOrigins.join(',')
 )
   .split(',')
   .map(o => o.trim())
@@ -241,10 +241,7 @@ app.get('/health', (req, res) => {
 
 // Image test route
 app.get('/test-images', (req, res) => {
-  const testImagePath = path.join(
-    __dirname,
-    '../Images/kojic jpgs/1ST.jpg',
-  );
+  const testImagePath = path.join(__dirname, '../Images/kojic jpgs/1ST.jpg');
   const imagesDir = path.join(__dirname, '../Images');
 
   res.json({
@@ -381,7 +378,7 @@ app.use((req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/health`);
   console.log(`🔐 Auth endpoints: http://localhost:${PORT}/api/auth`);
