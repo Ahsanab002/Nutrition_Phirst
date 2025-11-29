@@ -12,7 +12,13 @@ export const API_BASE = (
 export function resolveImage(src?: string) {
   if (!src) return "/placeholder.svg";                 // fallback
   if (/^https?:\/\//i.test(src)) return src;           // already absolute
-  const path = src.startsWith("/") ? src : `/${src}`;  // ensure leading slash
+  // If a root-relative path is provided (starts with '/'), treat it as a
+  // public/static asset and return it unchanged so the browser loads it
+  // from the current origin (e.g. /Banners/banner 15.jpg).
+  if (src.startsWith('/')) return encodeURI(src);
+
+  // Otherwise build an absolute URL pointing at the API image host.
+  const path = `/${src}`; // ensure leading slash
   return encodeURI(`${API_BASE}${path}`);              // prepend Railway base
 }
 

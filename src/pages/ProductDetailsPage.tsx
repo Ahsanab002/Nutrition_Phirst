@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import clsx from 'clsx';
 import { useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,25 @@ const ProductDetailsPage = () => {
   });
 
   const product = productData || null;
+  
+  // Tabs: 0 = Details, 1 = How to take it, 2 = Ingredients
+  const [activeTab, setActiveTab] = useState(0);
 
+  // Gallery state: initialize to placeholder then update when product is available
+  const [gallery, setGallery] = useState<string[]>([product ? (product.image || '/placeholder.svg') : '/placeholder.svg']);
+  const [mainImage, setMainImage] = useState<string>(gallery[0]);
+
+  useEffect(() => {
+    if (!product) return;
+    // product.images may be an array of URLs or objects depending on API shape
+    const imgs: string[] = Array.isArray(product.images)
+      ? product.images.map((i: any) => (typeof i === 'string' ? i : i.url)).filter(Boolean)
+      : [];
+
+    const finalGallery = imgs.length > 0 ? imgs : [product.image || '/placeholder.svg'];
+    setGallery(finalGallery);
+    setMainImage(finalGallery[0]);
+  }, [product]);
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
@@ -66,9 +85,18 @@ const ProductDetailsPage = () => {
       <main>
         <div className="container mx-auto py-10 px-4 md:px-0">
           <div className="flex flex-col md:flex-row gap-10 bg-white dark:bg-background rounded-lg shadow-lg p-8">
-            {/* Image */}
-            <div className="flex-shrink-0 w-full md:w-1/2 flex items-center justify-center">
-              <img src={product.image} alt={product.name} className="w-80 h-80 object-cover rounded border shadow" />
+            {/* Image / Gallery */}
+            <div className="flex-shrink-0 w-full md:w-1/2 flex flex-col items-center md:items-start">
+              <div className="w-full flex items-center justify-center">
+                <img src={mainImage} alt={product.name} className="w-80 h-80 object-cover rounded border shadow" />
+              </div>
+              <div className="mt-4 flex gap-3 overflow-x-auto w-full">
+                {gallery.map((src: string, idx: number) => (
+                  <button key={idx} onClick={() => setMainImage(src)} className={clsx('flex-shrink-0 rounded-lg overflow-hidden border', mainImage === src ? 'ring-2 ring-primary' : 'opacity-80') }>
+                    <img src={src} alt={`${product.name} ${idx + 1}`} className="w-20 h-20 object-cover" />
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Details */}
@@ -114,7 +142,7 @@ const ProductDetailsPage = () => {
 
                 <div className="mb-4">
                   <h3 className="font-semibold text-lg mb-1 text-foreground">Description</h3>
-                  <p className="text-base text-muted-foreground">{product.description}</p>
+                  <p className="text-base text-muted-foreground">{product.description || 'High-quality supplement formulated to support your daily wellness routine. Contains premium ingredients selected for efficacy and purity.'}</p>
                 </div>
 
                 {/* Dummy benefits to match style */}
@@ -150,6 +178,145 @@ const ProductDetailsPage = () => {
 
               <div className="mt-8">
                 <Button variant="ghost" onClick={() => navigate(-1)}>Back to Products</Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Tabs & Extended Content */}
+          <div className="container mx-auto px-4 md:px-0 mt-8">
+            <div className="bg-white dark:bg-background rounded-lg shadow p-6">
+              <nav className="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
+                {['Details', 'How to Take It', 'Ingredients'].map((t, i) => (
+                  <button
+                    key={t}
+                    onClick={() => setActiveTab(i)}
+                    className={clsx(
+                      'rounded-full px-6 py-3 text-lg font-medium transition-shadow duration-150 focus:outline-none',
+                      activeTab === i
+                        ? 'bg-primary text-white shadow-lg'
+                        : 'bg-emerald-100 text-foreground hover:bg-emerald-200'
+                    )}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </nav>
+
+              <div className="mt-6">
+                {activeTab === 0 && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-3">Product Details</h3>
+                    <p className="text-muted-foreground mb-4">{product.description || 'Professional-grade formula designed to support overall wellness.'}</p>
+                    <h4 className="font-semibold mb-2">Key Benefits</h4>
+                    <p className="text-muted-foreground mb-4">
+                      Supports Healthy Digestion, Promotes Gut Wellness, Assists Natural Detox Processes, and Boosts Daily Vitality. This professional-grade formula is designed to support your overall wellness through a carefully balanced blend of nutrients and botanicals.
+                    </p>
+                  </div>
+                )}
+
+                {activeTab === 1 && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-3">How to Take It</h3>
+                    <p className="text-muted-foreground mb-4">Take ½ to 2 droppers daily. Mix in juice or water before meals or at bedtime. Start low and increase gradually for a gentle cleanse. Use for 2 weeks, then take a 1-week break and repeat if needed.</p>
+                    <h4 className="font-semibold mb-2">Tips</h4>
+                    <p className="text-muted-foreground">
+                      Start with the lowest recommended dose. Take with food if you experience sensitivity. Consult healthcare practitioner if pregnant or nursing.
+                    </p>
+                  </div>
+                )}
+
+                {activeTab === 2 && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-3">Ingredients</h3>
+                    <p className="text-muted-foreground mb-4">Black Walnut Hulls, Wormwood Herb, Clove Bud Extract, Pumpkin Seed Oil, Garlic Extract, Turmeric Root, Oregano Oil, Fennel Seed, Soursop Leaf, Pau D'Arco Bark, Vegetable Glycerin, Distilled Water.</p>
+                    <p className="text-sm text-muted-foreground italic">Allergen Information: Contains tree nuts (Black Walnut). Free From: Gluten, Soy, Yeast, Milk, Lactose, Artificial Flavors, or Preservatives.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* How It Works & The Goods Inside */}
+            <div className="grid md:grid-cols-2 gap-8 mt-8">
+              <div className="bg-white dark:bg-background rounded-lg shadow p-8">
+                <h3 className="text-2xl font-semibold mb-4">How It Works</h3>
+                <p className="text-muted-foreground mb-4">Our liquid herbal formula is absorbed quickly, delivering concentrated botanicals to support digestive balance and natural detox pathways. A targeted blend of herbs works synergistically to assist the body’s cleansing mechanisms while supporting gut comfort and nutrient absorption.</p>
+                <ul className="list-disc list-inside text-muted-foreground">
+                  <li>Fast absorption for quicker results</li>
+                  <li>Synergistic herbal blend to support gut balance</li>
+                  <li>Gentle, plant-based cleansing approach</li>
+                </ul>
+              </div>
+
+              <div className="bg-white dark:bg-background rounded-lg shadow p-8">
+                <h3 className="text-2xl font-semibold mb-4">The Goods Inside</h3>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto rounded-full bg-emerald-100 flex items-center justify-center mb-2">🌿</div>
+                    <h4 className="font-semibold">Black Walnut</h4>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto rounded-full bg-emerald-100 flex items-center justify-center mb-2">⚕️</div>
+                    <h4 className="font-semibold">Wormwood</h4>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto rounded-full bg-emerald-100 flex items-center justify-center mb-2">🧪</div>
+                    <h4 className="font-semibold">Oregano Oil</h4>
+                  </div>
+                </div>
+                <p className="mt-4 text-muted-foreground">Vegan • Non‑GMO • Gluten‑Free • Crafted in a GMP‑Certified Facility</p>
+              </div>
+            </div>
+
+            {/* Reviews summary */}
+            <div className="bg-white dark:bg-background rounded-lg shadow p-6 mt-8">
+              <h3 className="text-2xl font-semibold mb-4">Reviews</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <div className="text-4xl font-bold text-foreground">{(Math.round((product.rating||4)*10)/10).toFixed(1)}</div>
+                  <div className="text-sm text-muted-foreground">{product.reviewCount || 120} Reviews</div>
+                </div>
+                <div className="md:col-span-2">
+                  {[5,4,3,2,1].map((star) => {
+                    const count = Math.round((star/5) * (product.reviewCount || 120));
+                    const pct = Math.round((count / (product.reviewCount || 120)) * 100);
+                    return (
+                      <div key={star} className="flex items-center gap-3 mb-2">
+                        <div className="w-10 text-sm">{star} stars</div>
+                        <div className="flex-1 bg-muted h-3 rounded overflow-hidden">
+                          <div className="bg-primary h-3" style={{ width: `${pct}%` }} />
+                        </div>
+                        <div className="w-12 text-sm text-muted-foreground">{count}</div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <div className="flex gap-3 overflow-x-auto">
+                  {Array.from({length:6}).map((_,i)=> (
+                    <img key={i} src="/placeholder.svg" alt={`review-${i}`} className="w-24 h-24 object-cover rounded" />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Footer features */}
+            <div className="grid md:grid-cols-3 gap-6 mt-8 text-center">
+              <div className="bg-white dark:bg-background rounded-lg shadow p-6">
+                <div className="text-3xl mb-2">🚚</div>
+                <h4 className="font-semibold">Fast Shipping</h4>
+                <p className="text-sm text-muted-foreground">Delivered within 2-3 business days for a flat rate of $6.99 and free shipping over $49.</p>
+              </div>
+              <div className="bg-white dark:bg-background rounded-lg shadow p-6">
+                <div className="text-3xl mb-2">🔁</div>
+                <h4 className="font-semibold">Easy Returns</h4>
+                <p className="text-sm text-muted-foreground">If you're not satisfied, you can return the product anytime within 30 days.</p>
+              </div>
+              <div className="bg-white dark:bg-background rounded-lg shadow p-6">
+                <div className="text-3xl mb-2">✉️</div>
+                <h4 className="font-semibold">Questions?</h4>
+                <p className="text-sm text-muted-foreground">Email us at <a href="mailto:hello@nutritionphirst.com" className="text-primary underline">hello@nutritionphirst.com</a> and we'll be happy to help you.</p>
               </div>
             </div>
           </div>

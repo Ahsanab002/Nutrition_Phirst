@@ -113,18 +113,47 @@ const products = [
     weight: 0.2
   },
   {
-    name: 'Parasite Cleanse Formula',
+    name: 'Nutrition pHirst Herbal Parasite Cleanse Drops – Advanced Gut & Intestinal Support',
     slug: 'parasite-cleanse-formula',
-    description: 'Natural parasite cleanse formula with powerful herbal ingredients. Supports digestive health and helps eliminate unwanted organisms from the body.',
-    shortDescription: 'Natural parasite cleanse with herbs',
+    description: `Nutrition pHirst Herbal Parasite Cleanse Drops – Advanced Gut & Intestinal Support
+
+A premium blend of powerful herbs including Black Walnut, Wormwood, Clove, and Oregano Oil crafted to support gut balance, digestive comfort, and daily body cleanse. This advanced liquid formula offers a gentle, plant-based way to help your body maintain a clean, balanced, and energized feeling from within.
+
+Key Benefits
+
+- Supports Healthy Digestion – Helps maintain intestinal balance and comfort.
+- Promotes Gut Wellness – Encourages a balanced microbiome for better absorption.
+- Assists Natural Detox Processes – Supports the body’s own cleansing pathways.
+- Boosts Daily Vitality – Plant nutrients help you feel refreshed and re-energized.
+- Gentle & Effective – Liquid format for faster absorption and easy daily use.
+
+Vegan • Non-GMO • Gluten-Free – Pure and clean formula you can trust.
+
+(These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.)
+
+Ingredients
+
+Black Walnut Hulls, Wormwood Herb, Clove Bud Extract, Pumpkin Seed Oil, Garlic Extract, Turmeric Root, Oregano Oil, Fennel Seed, Soursop Leaf, Pau D’Arco Bark, Vegetable Glycerin, Distilled Water.
+
+Allergen Information: Contains tree nuts (Black Walnut). Free From: Gluten, Soy, Yeast, Milk, Lactose, Artificial Flavors, or Preservatives.
+
+How to Use
+
+Take ½ to 2 droppers daily. Mix in juice or water before meals or at bedtime. Start low and increase gradually for a gentle cleanse. Use for 2 weeks, then take a 1-week break and repeat if needed.
+
+Why You’ll Love It
+
+All-in-One Herbal Cleanse Formula. Crafted in the USA in a GMP-Certified Facility. Backed by Science & Nature. No Fillers or Artificial Additives. Easy Liquid Absorption for Better Results.
+`,
+    shortDescription: 'Herbal parasite cleanse drops with black walnut, wormwood, clove & oregano oil — gentle liquid formula for gut support',
     sku: 'PCF001',
-    price: 44.99,
-    comparePrice: 59.99,
+    price: 39.99,
+    comparePrice: 49.99,
     categorySlug: 'detox-cleanse',
-    tags: ['parasite-cleanse', 'detox', 'herbal', 'natural', 'digestive'],
+    tags: ['parasite-cleanse', 'detox', 'herbal', 'liquid', 'gut-health', 'black-walnut', 'wormwood', 'oregano'],
     imageFolder: 'parasite/parasite jpgs',
     isFeatured: false,
-    weight: 0.3
+    weight: 0.35
   }
 ];
 

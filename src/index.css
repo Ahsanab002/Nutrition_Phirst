@@ -236,7 +236,7 @@
   
   .chip {
     background: linear-gradient(135deg, var(--tertiary) 0%, var(--accent) 100%);
-    color: #FFFFFF;
+    color: #d83775;
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(0,0,0,0.4);
     box-shadow: 0 4px 16px rgba(145, 167, 93, 0.3);
