@@ -36,7 +36,7 @@ const BenefitPageTemplate = ({ title, description, bannerImage, products }: Bene
         </div>
         {/* Background image */}
         <OptimizedBackground
-          src={bannerImage || '/backend/Images/13.jpg'}
+          src={bannerImage || 'https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_16_ry63ux.jpg'}
           className="w-full h-[360px] md:h-[460px] lg:h-[520px]"
         />
 
@@ -56,7 +56,7 @@ const BenefitPageTemplate = ({ title, description, bannerImage, products }: Bene
                 <Link to="/products">
                   <Button variant="premium" size="lg">Shop All Products</Button>
                 </Link>
-                <a href="/backend/Images/13.jpg" target="_blank" rel="noreferrer">
+                <a href="https://res.cloudinary.com/dvhethden/image/upload/v1764802355/Images/13.jpg" target="_blank" rel="noreferrer">
                   <Button variant="minimal" size="lg">View Collection</Button>
                 </a>
               </div>

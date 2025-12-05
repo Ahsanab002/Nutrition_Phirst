@@ -10,7 +10,7 @@ const Hero = () => {
         role="img"
         aria-label="Ultimate Wellness Collection banner"
         className="w-full bg-cover bg-center rounded-none"
-        style={{ minHeight: '70vh', backgroundImage: "url('/Banners/banner 15.jpg')" }}
+        style={{ minHeight: '70vh', backgroundImage: "url('https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_15_bj7yh7.jpg')" }}
       >
   <div className="w-full h-full bg-black/10">
           <div className="container mx-auto px-4 lg:px-8">

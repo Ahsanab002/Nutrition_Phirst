@@ -28,7 +28,7 @@ const BeautyBanner = () => {
           {/* Image */}
           <div className="relative order-2 lg:order-1">
             <img
-              src={beautyBanner}
+              src="https://res.cloudinary.com/dvhethden/image/upload/v1764958559/beauty-banner_pxjlhn.jpg"
               alt="Nutrition pHirst beauty and skincare products"
               className="w-full h-auto object-cover rounded-lg shadow-elegant"
             />

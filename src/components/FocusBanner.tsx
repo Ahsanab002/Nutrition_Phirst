@@ -75,19 +75,19 @@ const FocusBanner = () => {
             <Carousel className="w-full max-w-xl mx-auto" opts={{ loop: true }}>
               <CarouselContent>
                 <CarouselItem>
-                  <img src={banner1} alt="Banner 1" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
+                  <img src="https://res.cloudinary.com/dvhethden/image/upload/v1764802509/banner_1_iop7i1.jpg" alt="Banner 1" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
                 </CarouselItem>
                 <CarouselItem>
-                  <img src={banner2} alt="Banner 2" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
+                  <img src="https://res.cloudinary.com/dvhethden/image/upload/v1764802509/banner_2_dunrip.jpg" alt="Banner 2" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
                 </CarouselItem>
                 <CarouselItem>
-                  <img src={banner3} alt="Banner 3" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
+                  <img src="https://res.cloudinary.com/dvhethden/image/upload/v1764802509/banner_3_qy6sd2.jpg" alt="Banner 3" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
                 </CarouselItem>
                 <CarouselItem>
-                  <img src={banner4} alt="Banner 4" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
+                  <img src="https://res.cloudinary.com/dvhethden/image/upload/v1764802509/banner_4_glznxc.jpg" alt="Banner 4" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
                 </CarouselItem>
                 <CarouselItem>
-                  <img src={banner5} alt="Banner 5" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
+                  <img src="https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_5_bydnyd.jpg" alt="Banner 5" className="rounded-lg w-full h-auto object-cover shadow-elegant" />
                 </CarouselItem>
               </CarouselContent>
               <CarouselPrevious />
