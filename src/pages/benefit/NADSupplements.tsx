@@ -23,7 +23,7 @@ const NADSupplements = () => {
       <BenefitPageTemplate
         title="Energy"
         description="Enhance your cellular energy and support healthy aging with our premium NAD+ supplements for longevity and vitality."
-        bannerImage="/Banners/banner 9.jpg"
+        bannerImage="https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_9_r9xptp.jpg"
         products={products}
       />
       <Footer />

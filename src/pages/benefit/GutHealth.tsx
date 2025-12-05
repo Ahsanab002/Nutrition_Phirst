@@ -23,7 +23,7 @@ const GutHealth = () => {
       originalPrice: 99.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/methyleneblue/MB.png",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802405/Images/MB.png",
       badge: "Featured",
     },
   ];
@@ -34,7 +34,7 @@ const GutHealth = () => {
       <BenefitPageTemplate
         title="Gut Health"
         description="Advanced digestive wellness solutions to support your gut microbiome, improve digestion, and enhance overall digestive comfort."
-        bannerImage="/Banners/banner 2.jpg"
+        bannerImage="https://res.cloudinary.com/dvhethden/image/upload/v1764802509/banner_2_dunrip.jpg"
         products={products}
       />
       <Footer />

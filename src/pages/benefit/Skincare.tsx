@@ -12,7 +12,7 @@ const Skincare = () => {
       originalPrice: 69.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/kojic_jpgs/1ST.jpg",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802396/Images/1ST.jpg",
       badge: "Featured",
     },
     {
@@ -20,7 +20,7 @@ const Skincare = () => {
       name: "Matrixyl 3000+ Argireline Peptide Cream",
       price: 69.99,
       originalPrice: 89.99,
-      image: "/backend/Images/matrixyl/1st.png",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802403/Images/1ST.png",
       description:
         "Professional Matrixyl peptide complex that supports collagen synthesis and helps reduce the appearance of fine lines.",
       rating: 4.8,
@@ -34,7 +34,7 @@ const Skincare = () => {
       originalPrice: 79.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/retinol/retinoljpgs/retinoljpgs/1ST.jpg",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802449/Images/1ST.jpg",
       badge: "Featured",
     },
   ];
@@ -45,7 +45,7 @@ const Skincare = () => {
       <BenefitPageTemplate
         title="Skincare"
         description="Transform your skin with our premium skincare collection featuring scientifically-backed ingredients for healthy, radiant skin."
-        bannerImage="/Banners/banner 10.jpg"
+        bannerImage="https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_10_etomyi.jpg"
         products={products}
       />
       <Footer />
