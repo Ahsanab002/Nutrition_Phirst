@@ -101,7 +101,7 @@ const Index = () => {
               <div
                 className="w-full h-[400px] md:h-[500px] bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('/Banners/banner 6.jpg')",
+                  backgroundImage: "https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_6_k81qkh.jpg",
                 }}
               />
               <div className="absolute inset-0 bg-black/20 flex items-center">
@@ -141,7 +141,7 @@ const Index = () => {
               <div
                 className="w-full h-[400px] md:h-[500px] bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('/Banners/banner 7.jpg')",
+                  backgroundImage: "https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_7_twlhzm.jpg",
                 }}
               />
               <div className="absolute inset-0 bg-black/20 flex items-center">

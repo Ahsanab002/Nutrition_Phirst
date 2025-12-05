@@ -9,7 +9,7 @@ const DetoxCleanse = () => {
       name: "EDTA Chelation Therapy Supplement",
       price: 54.99,
       originalPrice: 74.99,  
-      image: "/backend/Images/Edta/EDTA.png",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802389/Images/EDTA.png",
       description: "EDTA chelation supplement for heavy metal detoxification and cardiovascular support",
       rating: 4.7,
       reviewCount: 189,
@@ -20,7 +20,7 @@ const DetoxCleanse = () => {
       name: "Parasite Cleanse Formula",
       price: 44.99,
       originalPrice: 59.99,
-      image: "/backend/Images/parasite/parasite_jpgs/1st.jpg",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764967183/1st_1_f9wnn6.jpg",
       description: "Natural parasite cleanse formula with powerful herbal ingredients",
       rating: 4.6,
       reviewCount: 156
@@ -33,7 +33,7 @@ const DetoxCleanse = () => {
       <BenefitPageTemplate
         title="Detox & Cleanse"
         description="Purify and rejuvenate your body with our natural detox and cleanse solutions designed to eliminate toxins and support optimal health."
-        bannerImage="/Banners/banner 6.jpg"
+        bannerImage="https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_6_k81qkh.jpg"
         products={products}
       />
       <Footer />

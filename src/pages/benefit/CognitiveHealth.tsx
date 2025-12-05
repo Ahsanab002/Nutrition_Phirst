@@ -20,7 +20,7 @@ const CognitiveHealth = () => {
       name: "Neuro Phirst Methylene Blue Capsules",
       price: 74.99,
       originalPrice: 94.99,
-      image: "/backend/Images/neuro/neuro_jpgs/1st.jpg",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764966090/1st_zblcts.jpg",
       description: "Nootropic blend for brain enhancement",
       rating: 5.0,
       reviewCount: 12

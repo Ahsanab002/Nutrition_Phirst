@@ -78,7 +78,7 @@ const Learn = () => {
           </div>
 
           <img
-            src={banner1}
+            src="https://res.cloudinary.com/dvhethden/image/upload/v1764802509/banner_3_qy6sd2.jpg"
             alt="Learn Banner"
             className="absolute inset-0 w-full h-full object-cover object-center z-0"
             style={{ filter: 'brightness(0.7)' }}

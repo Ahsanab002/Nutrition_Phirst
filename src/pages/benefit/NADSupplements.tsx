@@ -12,7 +12,7 @@ const NADSupplements = () => {
       originalPrice: 119.99,
       rating: 5,
       reviewCount: 12,
-      image: "/backend/Images/nad_jpgs/1st.jpg",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764965576/1st_cgwtbn.jpg",
       badge: "Featured",
     }
   ];
