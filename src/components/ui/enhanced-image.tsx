@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { imageService } from '@/services/imageService';
-import { resolveImage } from '@/lib/img';
+import { resolveImage } from '@/lib/img'; // <- only resolveImage needed
 
 export interface EnhancedImageProps {
   src: string;
@@ -37,24 +37,21 @@ export const EnhancedImage = ({
   const [error, setError] = useState(false);
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
-  // Normalize incoming src
+  // Normalize src: keep absolute URLs as-is
   const normalizedSrc = src.startsWith('http') ? src : resolveImage(src);
 
-  // Generate responsive srcSet
-  const rawSrcSet =
-    props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
-
+  // Generate srcSet (normalized)
+  const rawSrcSet = props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
   const finalSrcSet = rawSrcSet
     .split(',')
     .map((item) => {
       const [url, size] = item.trim().split(' ');
-      // ✅ Use resolveImage here instead of imageService
       const resolvedUrl = url.startsWith('http') ? url : resolveImage(url);
       return `${resolvedUrl} ${size}`;
     })
     .join(', ');
 
-  // Get webp/fallback and normalize
+  // WebP and JPEG fallback
   const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
   const webpSrc = webpSrcRaw.startsWith('http') ? webpSrcRaw : resolveImage(webpSrcRaw);
   const jpegSrc = jpegSrcRaw.startsWith('http') ? jpegSrcRaw : resolveImage(jpegSrcRaw);
@@ -84,7 +81,7 @@ export const EnhancedImage = ({
 
   return (
     <div className="relative w-full h-full">
-      {/* Blur Placeholder */}
+      {/* Blur placeholder */}
       {isLoading && blurUrl && (
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -100,10 +97,7 @@ export const EnhancedImage = ({
 
       {/* Main Image */}
       <picture>
-        {/* WebP version */}
         <source type="image/webp" srcSet={finalSrcSet} sizes={sizes} />
-
-        {/* Fallback version */}
         <img
           src={error ? '/placeholder.svg' : jpegSrc}
           alt={alt}
