@@ -40,15 +40,24 @@ export const EnhancedImage = ({
   // ✅ Normalize the incoming src to your Railway base
   const normalizedSrc = src.startsWith('http') ? src : resolveImage(src);
 
-  // Generate responsive srcSet (then normalize it)
-  const rawSrcSet =
-    props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
-  const finalSrcSet = resolveSrcSet(rawSrcSet);
+  const rawSrcSet = props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+
+  const finalSrcSet = rawSrcSet
+  .split(',')
+  .map((item) => {
+    const [url, size] = item.trim().split(' ');
+    const resolvedUrl = url.startsWith('http') ? url : imageService.resolveImage(url);
+    return `${resolvedUrl} ${size}`;
+  })
+  .join(', ');
+
+
 
   // Get webp/fallback from service, then normalize those too
   const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
-  const webpSrc = resolveImage(webpSrcRaw);
-  const jpegSrc = resolveImage(jpegSrcRaw);
+  const webpSrc = webpSrcRaw.startsWith('http') ? webpSrcRaw : resolveImage(webpSrcRaw);
+  const jpegSrc = jpegSrcRaw.startsWith('http') ? jpegSrcRaw : resolveImage(jpegSrcRaw);
+
 
   useEffect(() => {
     setIsLoading(true);
