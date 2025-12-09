@@ -13,30 +13,30 @@ const bestSellerData: Product[] = [
     price: 49.99,
     originalPrice: 69.99,
     rating: 5,
-    reviewCount: 12,
-    image: "/backend/Images/kojic_jpgs/1ST.jpg",
+    reviewCount: 200,
+    image: "https://res.cloudinary.com/dvhethden/image/upload/v1765319112/Kojic_uqxjs1.png",
     badge: "Best Seller",
   },
   {
     id: "parasite-cleanse",
-    name: "Parasite Cleanse Formula",
+    name: "Herbal Parasite Cleanse Drops",
     description: "Natural parasite cleanse with herbs",
     price: 44.99,
     originalPrice: 59.99,
     rating: 5,
-    reviewCount: 12,
-    image: "/backend/Images/parasite/parasite_jpgs/1st.jpg",
+    reviewCount: 32,
+    image: "https://res.cloudinary.com/dvhethden/image/upload/v1765314862/Parasite_din944.png",
     badge: "Best Seller",
   },
   {
       id: "cognitive-2",
-      name: "Neuro Enhancement Complex",
-      price: 74.99,
-      originalPrice: 94.99,
-      image: "/backend/Images/neuro/neuro_jpgs/1st.jpg",
+      name: "Neuro Phirst Methylene Blue",
+      price: 34.00,
+      originalPrice: 40.00,
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1765321019/NeuroP_bzv53p.png",
       description: "Nootropic blend for brain enhancement",
       rating: 5.0,
-      reviewCount: 12
+      reviewCount: 50
     }
 ];
 
