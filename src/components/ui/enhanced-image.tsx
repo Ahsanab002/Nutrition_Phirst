@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { imageService } from '@/services/imageService';
-import { resolveImage } from '@/lib/img'; // <- only resolveImage needed
+import { resolveImage } from '@/lib/img'; // resolveSrcSet not needed now
 
 export interface EnhancedImageProps {
   src: string;
@@ -37,21 +37,27 @@ export const EnhancedImage = ({
   const [error, setError] = useState(false);
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
-  // Normalize src: keep absolute URLs as-is
+  // Normalize the incoming src
   const normalizedSrc = src.startsWith('http') ? src : resolveImage(src);
 
-  // Generate srcSet (normalized)
-  const rawSrcSet = props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+  // Generate srcSet
+  const rawSrcSet =
+    props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+
   const finalSrcSet = rawSrcSet
     .split(',')
     .map((item) => {
       const [url, size] = item.trim().split(' ');
-      const resolvedUrl = url.startsWith('http') ? url : resolveImage(url);
-      return `${resolvedUrl} ${size}`;
+      let cleanUrl = url.startsWith('http') ? url : resolveImage(url);
+
+      // Remove accidental leading slash for absolute URLs
+      if (cleanUrl.startsWith('/http')) cleanUrl = cleanUrl.slice(1);
+
+      return `${cleanUrl} ${size}`;
     })
     .join(', ');
 
-  // WebP and JPEG fallback
+  // Get webp/fallback URLs
   const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
   const webpSrc = webpSrcRaw.startsWith('http') ? webpSrcRaw : resolveImage(webpSrcRaw);
   const jpegSrc = jpegSrcRaw.startsWith('http') ? jpegSrcRaw : resolveImage(jpegSrcRaw);
@@ -81,7 +87,7 @@ export const EnhancedImage = ({
 
   return (
     <div className="relative w-full h-full">
-      {/* Blur placeholder */}
+      {/* Blur Placeholder */}
       {isLoading && blurUrl && (
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -97,7 +103,10 @@ export const EnhancedImage = ({
 
       {/* Main Image */}
       <picture>
+        {/* WebP version */}
         <source type="image/webp" srcSet={finalSrcSet} sizes={sizes} />
+
+        {/* Fallback version */}
         <img
           src={error ? '/placeholder.svg' : jpegSrc}
           alt={alt}
