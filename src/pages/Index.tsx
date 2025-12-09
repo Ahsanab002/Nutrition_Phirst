@@ -61,7 +61,7 @@ const Index = () => {
               <div
                 className="w-full h-[400px] md:h-[500px] bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('https://res.cloudinary.com/dvhethden/image/upload/v1764802510/Banner17.jpg')",
+                  backgroundImage: "url('https://res.cloudinary.com/dvhethden/image/upload/v1764802509/banner_12_xsbzjl.jpg')",
                 }}
               />
               <div className="absolute inset-0 bg-black/20 flex items-center">
