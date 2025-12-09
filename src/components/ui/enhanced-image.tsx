@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { imageService } from '@/services/imageService';
-import { resolveImage, resolveSrcSet } from '@/lib/img'; // ← added
+import { resolveImage } from '@/lib/img';
 
 export interface EnhancedImageProps {
   src: string;
@@ -37,27 +37,27 @@ export const EnhancedImage = ({
   const [error, setError] = useState(false);
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
-  // ✅ Normalize the incoming src to your Railway base
+  // Normalize incoming src
   const normalizedSrc = src.startsWith('http') ? src : resolveImage(src);
 
-  const rawSrcSet = props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+  // Generate responsive srcSet
+  const rawSrcSet =
+    props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
 
   const finalSrcSet = rawSrcSet
-  .split(',')
-  .map((item) => {
-    const [url, size] = item.trim().split(' ');
-    const resolvedUrl = url.startsWith('http') ? url : imageService.resolveImage(url);
-    return `${resolvedUrl} ${size}`;
-  })
-  .join(', ');
+    .split(',')
+    .map((item) => {
+      const [url, size] = item.trim().split(' ');
+      // ✅ Use resolveImage here instead of imageService
+      const resolvedUrl = url.startsWith('http') ? url : resolveImage(url);
+      return `${resolvedUrl} ${size}`;
+    })
+    .join(', ');
 
-
-
-  // Get webp/fallback from service, then normalize those too
+  // Get webp/fallback and normalize
   const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
   const webpSrc = webpSrcRaw.startsWith('http') ? webpSrcRaw : resolveImage(webpSrcRaw);
   const jpegSrc = jpegSrcRaw.startsWith('http') ? jpegSrcRaw : resolveImage(jpegSrcRaw);
-
 
   useEffect(() => {
     setIsLoading(true);
