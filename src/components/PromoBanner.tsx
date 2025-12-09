@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const PromoBanner = () => {
 	return (
 		<section className="relative w-full">
-			{/*
 			{/* Background image */}
 			<div
 				className="w-full h-[360px] md:h-[460px] lg:h-[520px] bg-cover bg-center"
@@ -12,9 +11,7 @@ const PromoBanner = () => {
 					backgroundImage: "url('/13.jpg')", // ✅ Image now served from public folder
 				}}
 			/>
-			*/}
 
-			{/*
 			{/* Overlay content */}
 			<div className="absolute inset-0 flex items-center">
 				<div className="container mx-auto px-4 lg:px-8">
@@ -36,7 +33,6 @@ const PromoBanner = () => {
 					</div>
 				</div>
 			</div>
-			*/}
 		</section>
 	);
 };
