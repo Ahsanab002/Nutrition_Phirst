@@ -38,7 +38,7 @@ export const EnhancedImage = ({
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
   // ✅ Normalize the incoming src to your Railway base
-  const normalizedSrc = resolveImage(src);
+  const normalizedSrc = src.startsWith('http') ? src : resolveImage(src);
 
   // Generate responsive srcSet (then normalize it)
   const rawSrcSet =
