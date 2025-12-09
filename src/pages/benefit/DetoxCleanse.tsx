@@ -33,7 +33,7 @@ const DetoxCleanse = () => {
       <BenefitPageTemplate
         title="Detox & Cleanse"
         description="Purify and rejuvenate your body with our natural detox and cleanse solutions designed to eliminate toxins and support optimal health."
-        bannerImage="https://res.cloudinary.com/dvhethden/image/upload/v1764802510/banner_6_k81qkh.jpg"
+        bannerImage="https://res.cloudinary.com/dvhethden/image/upload/v1765312432/Detox_and_cleanse_qbavuh.jpg"
         products={products}
       />
       <Footer />
