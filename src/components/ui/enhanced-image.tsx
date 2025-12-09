@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { imageService } from '@/services/imageService';
+import { resolveImage, resolveSrcSet } from '@/lib/img'; // ← added
 
 export interface EnhancedImageProps {
   src: string;
@@ -30,42 +31,32 @@ export const EnhancedImage = ({
   blur = false,
   loading: userLoading,
   decoding: userDecoding,
-  srcSet,
   ...props
 }: EnhancedImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
-  // ✅ Only normalize relative URLs; keep absolute URLs (Cloudinary) untouched
-  const normalizedSrc = src.startsWith('http') ? src : imageService.resolveImage(src);
+  // ✅ Normalize the incoming src to your Railway base
+  const normalizedSrc = resolveImage(src);
 
-  // Generate responsive srcSet (normalize each URL)
-  const finalSrcSet =
-    srcSet
-      ? srcSet
-          .split(',')
-          .map((item) => {
-            const [url, size] = item.trim().split(' ');
-            const resolvedUrl = url.startsWith('http') ? url : imageService.resolveImage(url);
-            return `${resolvedUrl} ${size}`;
-          })
-          .join(', ')
-      : imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+  // Generate responsive srcSet (then normalize it)
+  const rawSrcSet =
+    props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+  const finalSrcSet = resolveSrcSet(rawSrcSet);
 
-  // Get webp/fallback versions and normalize
+  // Get webp/fallback from service, then normalize those too
   const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
-  const webpSrc = webpSrcRaw.startsWith('http') ? webpSrcRaw : imageService.resolveImage(webpSrcRaw);
-  const jpegSrc = jpegSrcRaw.startsWith('http') ? jpegSrcRaw : imageService.resolveImage(jpegSrcRaw);
+  const webpSrc = resolveImage(webpSrcRaw);
+  const jpegSrc = resolveImage(jpegSrcRaw);
 
-  // Blur placeholder
   useEffect(() => {
     setIsLoading(true);
     setError(false);
 
     if (blur) {
       const raw = imageService.getPlaceholderUrl(normalizedSrc);
-      setBlurUrl(raw.startsWith('http') ? raw : imageService.resolveImage(raw));
+      setBlurUrl(resolveImage(raw));
     }
 
     if (priority) {
@@ -103,7 +94,7 @@ export const EnhancedImage = ({
         {/* WebP version */}
         <source type="image/webp" srcSet={finalSrcSet} sizes={sizes} />
 
-        {/* Fallback JPEG/PNG */}
+        {/* Fallback version */}
         <img
           src={error ? '/placeholder.svg' : jpegSrc}
           alt={alt}
@@ -120,5 +111,3 @@ export const EnhancedImage = ({
     </div>
   );
 };
-
-export default EnhancedImage;
