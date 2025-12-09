@@ -12,7 +12,7 @@ const Skincare = () => {
       originalPrice: 69.99,
       rating: 5,
       reviewCount: 12,
-      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802396/Images/1ST.jpg",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1765319112/Kojic_uqxjs1.png",
       badge: "Featured",
     },
     {
@@ -20,7 +20,7 @@ const Skincare = () => {
       name: "Matrixyl 3000+ Argireline Peptide Cream",
       price: 69.99,
       originalPrice: 89.99,
-      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802403/Images/1ST.png",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1765319198/Mtrixyl_nrxeh0.png",
       description:
         "Professional Matrixyl peptide complex that supports collagen synthesis and helps reduce the appearance of fine lines.",
       rating: 4.8,
@@ -34,7 +34,7 @@ const Skincare = () => {
       originalPrice: 79.99,
       rating: 5,
       reviewCount: 12,
-      image: "https://res.cloudinary.com/dvhethden/image/upload/v1764802449/Images/1ST.jpg",
+      image: "https://res.cloudinary.com/dvhethden/image/upload/v1765319291/Retinol_m17yvt.png",
       badge: "Featured",
     },
   ];
