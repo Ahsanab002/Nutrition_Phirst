@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { imageService } from '@/services/imageService';
-import { resolveImage } from '@/lib/img'; // resolveSrcSet not needed now
 
 export interface EnhancedImageProps {
   src: string;
@@ -10,10 +8,7 @@ export interface EnhancedImageProps {
   height?: number;
   placeholderColor?: string;
   priority?: boolean;
-  sizes?: string;
-  quality?: number;
   blur?: boolean;
-  srcSet?: string;
   loading?: 'lazy' | 'eager';
   decoding?: 'sync' | 'async' | 'auto';
 }
@@ -25,9 +20,7 @@ export const EnhancedImage = ({
   width,
   height,
   priority = false,
-  sizes = '100vw',
   placeholderColor = '#f3f4f6',
-  quality = 75,
   blur = false,
   loading: userLoading,
   decoding: userDecoding,
@@ -35,46 +28,11 @@ export const EnhancedImage = ({
 }: EnhancedImageProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [blurUrl, setBlurUrl] = useState<string | null>(null);
-
-  // Normalize the incoming src
-  const normalizedSrc = src.startsWith('http') ? src : resolveImage(src);
-
-  // Generate srcSet
-  const rawSrcSet =
-    props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
-
-  const finalSrcSet = rawSrcSet
-    .split(',')
-    .map((item) => {
-      const [url, size] = item.trim().split(' ');
-      let cleanUrl = url.startsWith('http') ? url : resolveImage(url);
-
-      // Remove accidental leading slash for absolute URLs
-      if (cleanUrl.startsWith('/http')) cleanUrl = cleanUrl.slice(1);
-
-      return `${cleanUrl} ${size}`;
-    })
-    .join(', ');
-
-  // Get webp/fallback URLs
-  const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
-  const webpSrc = webpSrcRaw.startsWith('http') ? webpSrcRaw : resolveImage(webpSrcRaw);
-  const jpegSrc = jpegSrcRaw.startsWith('http') ? jpegSrcRaw : resolveImage(jpegSrcRaw);
 
   useEffect(() => {
     setIsLoading(true);
     setError(false);
-
-    if (blur) {
-      const raw = imageService.getPlaceholderUrl(normalizedSrc);
-      setBlurUrl(resolveImage(raw));
-    }
-
-    if (priority) {
-      imageService.preloadImage(normalizedSrc);
-    }
-  }, [normalizedSrc, priority, blur]);
+  }, [src]);
 
   const handleLoad = () => setIsLoading(false);
   const handleError = () => {
@@ -88,11 +46,11 @@ export const EnhancedImage = ({
   return (
     <div className="relative w-full h-full">
       {/* Blur Placeholder */}
-      {isLoading && blurUrl && (
+      {isLoading && blur && (
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${blurUrl})`,
+            backgroundImage: `url(${src})`,
             backgroundColor: placeholderColor,
             filter: 'blur(20px)',
             transform: 'scale(1.1)',
@@ -102,24 +60,18 @@ export const EnhancedImage = ({
       )}
 
       {/* Main Image */}
-      <picture>
-        {/* WebP version */}
-        <source type="image/webp" srcSet={finalSrcSet} sizes={sizes} />
-
-        {/* Fallback version */}
-        <img
-          src={error ? '/placeholder.svg' : jpegSrc}
-          alt={alt}
-          className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ease-in-out`}
-          width={width}
-          height={height}
-          onLoad={handleLoad}
-          onError={handleError}
-          loading={loading}
-          decoding={decoding}
-          {...props}
-        />
-      </picture>
+      <img
+        src={error ? '/placeholder.svg' : src}
+        alt={alt}
+        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ease-in-out`}
+        width={width}
+        height={height}
+        onLoad={handleLoad}
+        onError={handleError}
+        loading={loading}
+        decoding={decoding}
+        {...props}
+      />
     </div>
   );
 };
