@@ -45,7 +45,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       <div className="relative">
         <EnhancedImage
           src={product.image}
-          {...(product.imageSrcSet ? { srcSet: product.imageSrcSet } : {})}
+          /* {...(product.imageSrcSet ? { srcSet: product.imageSrcSet } : {})} */
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={product.name}
           className="w-full h-56 object-contain group-hover:scale-105 transition-elegant p-6"
