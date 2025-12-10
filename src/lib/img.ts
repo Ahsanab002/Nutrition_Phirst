@@ -18,7 +18,7 @@ export function resolveImage(src?: string) {
   if (src.startsWith('/')) return encodeURI(src);
 
   // Otherwise build an absolute URL pointing at the API image host.
-  const path = `/${src}`; // ensure leading slash
+  const path = `${src}`; // ensure leading slash
   return encodeURI(`${API_BASE}${path}`);              // prepend Railway base
 }
 
