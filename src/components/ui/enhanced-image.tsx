@@ -60,18 +60,23 @@ export const EnhancedImage = ({
       )}
 
       {/* Main Image */}
-      <img
-        src={error ? '/placeholder.svg' : src}
-        alt={alt}
-        className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ease-in-out`}
-        width={width}
-        height={height}
-        onLoad={handleLoad}
-        onError={handleError}
-        loading={loading}
-        decoding={decoding}
-        {...props}
-      />
+      <picture>
+        {/* We keep picture for future use */}
+        <source type="image/webp" srcSet={src} />
+
+        <img
+          src={error ? '/placeholder.svg' : src}
+          alt={alt}
+          className={`${className} ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ease-in-out`}
+          width={width}
+          height={height}
+          onLoad={handleLoad}
+          onError={handleError}
+          loading={loading}
+          decoding={decoding}
+          {...props}
+        />
+      </picture>
     </div>
   );
 };
