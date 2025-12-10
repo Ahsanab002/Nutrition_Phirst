@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { imageService } from '@/services/imageService';
-import { resolveImage } from '@/lib/img'; // resolveSrcSet not needed now
+import { resolveImage, resolveSrcSet } from '@/lib/img';
 
 export interface EnhancedImageProps {
   src: string;
@@ -38,29 +38,17 @@ export const EnhancedImage = ({
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
   // Normalize the incoming src
-  const normalizedSrc = src.startsWith('http') ? src : resolveImage(src);
+  const normalizedSrc = resolveImage(src);
 
-  // Generate srcSet
+  // Generate responsive srcSet (then normalize it)
   const rawSrcSet =
     props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
+  const finalSrcSet = resolveSrcSet(rawSrcSet);
 
-  const finalSrcSet = rawSrcSet
-    .split(',')
-    .map((item) => {
-      const [url, size] = item.trim().split(' ');
-      let cleanUrl = url.startsWith('http') ? url : resolveImage(url);
-
-      // Remove accidental leading slash for absolute URLs
-      if (cleanUrl.startsWith('/http')) cleanUrl = cleanUrl.slice(1);
-
-      return `${cleanUrl} ${size}`;
-    })
-    .join(', ');
-
-  // Get webp/fallback URLs
+  // Get webp/fallback from service, then normalize
   const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
-  const webpSrc = webpSrcRaw.startsWith('http') ? webpSrcRaw : resolveImage(webpSrcRaw);
-  const jpegSrc = jpegSrcRaw.startsWith('http') ? jpegSrcRaw : resolveImage(jpegSrcRaw);
+  const webpSrc = resolveImage(webpSrcRaw);
+  const jpegSrc = resolveImage(jpegSrcRaw);
 
   useEffect(() => {
     setIsLoading(true);
