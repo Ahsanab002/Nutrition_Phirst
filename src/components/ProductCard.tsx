@@ -44,7 +44,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
     <div className="group overflow-hidden h-full flex flex-col">
       <div className="relative">
         <EnhancedImage
-          src={product.image}
+          src={product.image.startsWith('/') ? product.image.slice(1) : product.image}
           /* {...(product.imageSrcSet ? { srcSet: product.imageSrcSet } : {})} */
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={product.name}
