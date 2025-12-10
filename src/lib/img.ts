@@ -19,7 +19,7 @@ export function resolveImage(src?: string) {
 
   // Otherwise build an absolute URL pointing at the API image host.
   const path = `${src}`; // ensure leading slash
-  return encodeURI(`${API_BASE}${path}`);              // prepend Railway base
+  return encodeURI(`${path}`);              // prepend Railway base
 }
 
 /** Normalize a srcSet string like: "img1.jpg 1x, /uploads/img2.jpg 2x" */
