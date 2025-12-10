@@ -62,7 +62,6 @@ export const EnhancedImage = ({
       {/* Main Image */}
       <picture>
         {/* We keep picture for future use */}
-        <source type="image/webp" srcSet={src} />
 
         <img
           src={error ? '/placeholder.svg' : src}
