@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { imageService } from '@/services/imageService';
-import { resolveImage, resolveSrcSet } from '@/lib/img';
+import { resolveImage, resolveSrcSet } from '@/lib/img'; // ← added
 
 export interface EnhancedImageProps {
   src: string;
@@ -37,7 +37,7 @@ export const EnhancedImage = ({
   const [error, setError] = useState(false);
   const [blurUrl, setBlurUrl] = useState<string | null>(null);
 
-  // Normalize the incoming src
+  // ✅ Normalize the incoming src to your Railway base
   const normalizedSrc = resolveImage(src);
 
   // Generate responsive srcSet (then normalize it)
@@ -45,7 +45,7 @@ export const EnhancedImage = ({
     props.srcSet || imageService.generateSrcSet(normalizedSrc, [320, 640, 768, 1024, 1280, 1536], quality);
   const finalSrcSet = resolveSrcSet(rawSrcSet);
 
-  // Get webp/fallback from service, then normalize
+  // Get webp/fallback from service, then normalize those too
   const { src: webpSrcRaw, fallback: jpegSrcRaw } = imageService.getImageWithFallback(normalizedSrc, quality);
   const webpSrc = resolveImage(webpSrcRaw);
   const jpegSrc = resolveImage(jpegSrcRaw);
