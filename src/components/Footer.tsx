@@ -55,7 +55,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer style={{ background: 'linear-gradient(90deg, #c5e0bf 0%, #a6d1a0 50%, #7fb57d 100%)' }} className="w-full py-8 text-center relative overflow-hidden bg-gradient-to-r from-emerald-200 via-emerald-300 to-emerald-400 text-white">
+    <footer style={{ background: 'linear-gradient(90deg, #2d5016 0%, #3d6b1f 50%, #2d5016 100%)' }} className="w-full py-8 text-center relative overflow-hidden text-white">
       {/* Decorative leaves */}
       <div className="pointer-events-none absolute inset-0">
         <LeafDecoration className="absolute -left-12 top-24 opacity-40 scale-150 rotate-45" size={180} color="var(--tertiary)" />
