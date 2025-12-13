@@ -55,7 +55,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full text-base-800 py-8 text-center relative overflow-hidden" style={{ background: 'linear-gradient(180deg, var(--background) 0%, var(--muted) 100%)' }}>
+    <footer style={{ background: 'linear-gradient(90deg, #c5e0bf 0%, #a6d1a0 50%, #7fb57d 100%)' }} className="w-full py-8 text-center relative overflow-hidden bg-gradient-to-r from-emerald-200 via-emerald-300 to-emerald-400 text-white">
       {/* Decorative leaves */}
       <div className="pointer-events-none absolute inset-0">
         <LeafDecoration className="absolute -left-12 top-24 opacity-40 scale-150 rotate-45" size={180} color="var(--tertiary)" />
@@ -67,17 +67,17 @@ const Footer = () => {
         {/* Newsletter Signup */}
         <div className="py-12 relative">
           <div className="max-w-md mx-auto text-center space-y-4">
-            <h3 className="text-2xl font-serif font-semibold text-foreground">
+            <h3 className="text-2xl font-serif font-semibold text-white">
               Stay in the know
             </h3>
-            <p className="text-base text-muted-foreground max-w-sm mx-auto">
+            <p className="text-base text-white/90 max-w-sm mx-auto">
               Get exclusive access to new products, wellness tips, and special offers.
             </p>
             <div className="flex gap-3 max-w-sm mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-white/90 backdrop-blur border-tertiary focus:border-accent"
+                className="flex-1 bg-white/90 backdrop-blur border-tertiary focus:border-accent rounded-lg px-4 py-2"
               />
               <Button variant="premium" size="sm">
                 Subscribe
@@ -87,17 +87,16 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div
-          className="w-full py-12 relative bg-gradient-footer backdrop-blur-sm"
-        >
+        <div className="w-full py-12 relative bg-white/10 backdrop-blur-sm border-t border-white/10 shadow-inner rounded-t-3xl">
+
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
             {/* Brand Section */}
             <div className="col-span-2 md:col-span-4 lg:col-span-1 space-y-6">
               <Link to="/" className="inline-block">
-                <span className="text-3xl font-serif font-bold text-foreground tracking-tight">Nutrition pHirst</span>
+                <span className="text-3xl font-serif font-bold text-white tracking-tight">Nutrition pHirst</span>
               </Link>
-              <p className="text-base text-muted-foreground leading-relaxed max-w-xs">
+              <p className="text-base text-white/80 leading-relaxed max-w-xs">
                 Premium wellness supplements designed for modern life. 
                 Scientifically-backed solutions for optimal health and cognitive performance.
               </p>
@@ -109,11 +108,11 @@ const Footer = () => {
                     key={index}
                     variant="ghost"
                     size="icon"
-                    className="h-8 w-8"
+                    className="h-8 w-8 bg-white/10 rounded-full hover:bg-white/20 text-white"
                     asChild
                   >
                     <a href={social.href} aria-label={social.label}>
-                      <social.icon className="h-4 w-4" />
+                      <social.icon className="h-4 w-4 text-white" />
                     </a>
                   </Button>
                 ))}
@@ -123,7 +122,7 @@ const Footer = () => {
             {/* Footer Links */}
             {footerSections.map((section) => (
               <div key={section.title} className="space-y-6">
-                <h4 className="font-serif font-semibold text-lg text-foreground">
+                <h4 className="font-serif font-semibold text-lg text-white">
                   {section.title}
                 </h4>
                 <ul className="space-y-3">
@@ -131,7 +130,7 @@ const Footer = () => {
                     <li key={link.name}>
                       <Link
                         to={link.href}
-                        className="text-base text-muted-foreground hover:text-accent transition-colors"
+                        className="text-base text-white/90 hover:text-white transition-colors"
                       >
                         {link.name}
                       </Link>
