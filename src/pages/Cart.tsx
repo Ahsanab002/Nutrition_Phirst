@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Minus, Plus, X, ShoppingBag, Truck, Shield, RotateCcw } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useScrollToTop } from "@/hooks/use-scroll-to-top";
-import { useNavigate } from "react-router-dom";
+
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const Cart = () => {
               Looks like you haven't added anything to your cart yet.
             </p>
             <Button variant="premium" size="lg" asChild>
-              <a href="/products">Continue Shopping</a>
+              <Link to="/products">Continue Shopping</Link>
             </Button>
           </div>
         </main>
