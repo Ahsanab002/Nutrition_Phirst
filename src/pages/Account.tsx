@@ -166,7 +166,7 @@ const Account = () => {
                 <TabsTrigger 
                   value="login" 
                   className={`transition-all duration-200 ${
-                    activeTab === 'login' ? 'tab-selected' : ''
+                    activeTab === 'login' ? 'tab-selected text-white' : ''
                   }`}
                 >
                   Sign In
@@ -174,7 +174,7 @@ const Account = () => {
                 <TabsTrigger 
                   value="register" 
                   className={`transition-all duration-200 ${
-                    activeTab === 'register' ? 'tab-selected' : ''
+                    activeTab === 'register' ? 'tab-selected text-white' : ''
                   }`}
                 >
                   Create Account
@@ -193,7 +193,7 @@ const Account = () => {
                         <Input 
                           id="loginEmail" 
                           type="email" 
-                          placeholder="your@email.com"
+                          placeholder=""
                           value={loginData.email}
                           onChange={(e) => setLoginData({...loginData, email: e.target.value})}
                           required
@@ -246,7 +246,7 @@ const Account = () => {
                           <Label htmlFor="firstName">First Name</Label>
                           <Input 
                             id="firstName" 
-                            placeholder="John"
+                            placeholder=""
                             value={signupData.firstName}
                             onChange={(e) => setSignupData({...signupData, firstName: e.target.value})}
                             required
@@ -256,7 +256,7 @@ const Account = () => {
                           <Label htmlFor="lastName">Last Name</Label>
                           <Input 
                             id="lastName" 
-                            placeholder="Doe"
+                            placeholder=""
                             value={signupData.lastName}
                             onChange={(e) => setSignupData({...signupData, lastName: e.target.value})}
                             required
@@ -268,7 +268,7 @@ const Account = () => {
                         <Input 
                           id="signupEmail" 
                           type="email" 
-                          placeholder="your@email.com"
+                          placeholder=""
                           value={signupData.email}
                           onChange={(e) => setSignupData({...signupData, email: e.target.value})}
                           required
