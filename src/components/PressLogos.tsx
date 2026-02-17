@@ -1,14 +1,14 @@
 const PressLogos = () => {
   const pressLogos = [
-    { name: "Vogue", alt: "As seen in Vogue" },
-    { name: "Forbes", alt: "Featured in Forbes" },
-    { name: "WWD", alt: "Covered by WWD" },
-    { name: "The Zoe Report", alt: "Featured in The Zoe Report" },
-    { name: "Coveteur", alt: "Featured in Coveteur" },
-    { name: "NewBeauty", alt: "Featured in NewBeauty" },
-    { name: "Cosmopolitan", alt: "Featured in Cosmopolitan" },
-    { name: "Marie Claire", alt: "Featured in Marie Claire" },
-    { name: "Byrdie", alt: "Featured in Byrdie" },
+    // { name: "Vogue", alt: "As seen in Vogue" },
+    // { name: "Forbes", alt: "Featured in Forbes" },
+    // { name: "WWD", alt: "Covered by WWD" },
+    // { name: "The Zoe Report", alt: "Featured in The Zoe Report" },
+    // { name: "Coveteur", alt: "Featured in Coveteur" },
+    // { name: "NewBeauty", alt: "Featured in NewBeauty" },
+    // { name: "Cosmopolitan", alt: "Featured in Cosmopolitan" },
+    // { name: "Marie Claire", alt: "Featured in Marie Claire" },
+    // { name: "Byrdie", alt: "Featured in Byrdie" },
   ];
 
   return (
