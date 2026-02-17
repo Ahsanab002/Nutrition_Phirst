@@ -16,7 +16,7 @@ const PressLogos = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-8">
           <p className="text-sm font-medium text-muted-foreground tracking-wider">
-            AS SEEN IN
+        
           </p>
         </div>
         
